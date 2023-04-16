@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>rpsong</title>
+</head>
+<body>
+  <h1>Reproductor de canciones</h1>
+  <h2>Título: <span th:text="${newSong.title}"></span></h2>
+  <iframe id="frame" width="560" height="315"></iframe>  </iframe></body>
+  <div id="urlSong" th:data-myVariable="${newSong.url}"></div> <!--Este div es para poder acceder al atributo data-myVariable-->
+
+<script> //Este script es para poder acceder al iframe y cambiarle el src mediante el atributo data-myVariable
+    var frame = document.getElementById("frame");
+    var myVariable = document.getElementById("urlSong").getAttribute("data-myVariable");
+    frame.setAttribute("src", myVariable);
+</script>
+</html>
