@@ -24,4 +24,6 @@ public class ServiceSong implements iServiceSong {
     public Song fingById(int id) {
         return repository.findById(id);
     }
+
+    public void save(Song song){repository.save(song);}
 }

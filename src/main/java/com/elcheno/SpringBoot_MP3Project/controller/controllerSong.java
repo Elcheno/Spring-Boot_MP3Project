@@ -10,6 +10,7 @@ import java.util.List;
 @Controller
 public class controllerSong {
     private ServiceSong songService; //SERVICIO DE CANCIONES
+    private boolean flag = false;
 
     public controllerSong(ServiceSong songService) { //CONSTRUCTOR
         this.songService = songService;
@@ -17,6 +18,10 @@ public class controllerSong {
 
     @GetMapping("/songs")
     public String song(Model model){ //METODO DE LA VISTA 'song' (LISTA DE CANCIONES)
+        if(!flag){
+            getSongs();
+            flag = true;
+        }
         List<Song> songs = songService.getAllSongs();
         model.addAttribute("title", "CANCIONES");
         model.addAttribute("songs", songs);
@@ -29,5 +34,12 @@ public class controllerSong {
         Song newSong = songService.fingById(id);
         model.addAttribute("newSong", newSong);
         return "rpsong";
+    }
+
+    public void getSongs(){
+        songService.save(new Song("Triste Verano", "description", "Elacio Carrión", "SQymtMNE9BU"));
+        songService.save(new Song("Coco Chanel", "description", "Elacio Carrión", "j1VVY2sEdC0"));
+        songService.save(new Song("Si La Calle Llama Remix", "description", "Elacio Carrión", "_REASiFeT_g"));
+        songService.save(new Song("Hola Cómo Vas", "description", "Elacio Carrión", "PKoBuyUfQSo"));
     }
 }

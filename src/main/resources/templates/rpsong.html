@@ -4,34 +4,41 @@
     <meta charset="UTF-8">
     <title>rpsong</title>
     <link rel="stylesheet" href="/style-rpsong.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <a th:href="@{/songs}">
+    <button><i class="fas fa-chevron-left"></i></button>
+  </a>
   <h1>Reproductor de canciones</h1>
-  <div th:data-myVariable="${newSong.url}" ></div>
   <h1 th:text="${newSong.url}" id="urlSong" style="display: none"></h1>
   <h2><span th:text="${newSong.title}"></span></h2>
   <div id="player"></div>
+  <hr>
+  <input type="range" value="0" id="progress" max="0">
+  <button onclick="controlSong()"><i class="fas fa-pause" id="ctrlIconPlayPause"></i></button>
+  <button onclick="controlMutedSong()"><i class="fas fa-volume-up" id="ctrlIconMuted"></i></button>
 
-  <script>
-      //var myVariable = document.getElementById("urlSong").getAttribute('th:data-myVariable');
-      var myVariable = document.getElementById("urlSong").textContent;
-  </script>
+
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
-      // 2. This code loads the IFrame Player API code asynchronously.
-      var tag = document.createElement('script');
-
+      let myVariable = document.getElementById("urlSong").textContent;
+      let progress = document.getElementById("progress");
+      let ctrlIconMuted = document.getElementById("ctrlIconMuted");
+  </script>
+  <script>
+      // Este codigo carga el frame de la API de youtube
+      let tag = document.createElement('script');
       tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
+      let firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-      // 3. This function creates an <iframe> (and YouTube player)
-      //    after the API code downloads.
-      var player;
+      // Esta funcion crea el frame de youtube
+      let player;
       function onYouTubeIframeAPIReady() {
           player = new YT.Player('player', {
-              height: '360',
-              width: '640',
+              height: '0',
+              width: '0',
               //videoId: 'M7lc1UVf-VE',
               videoId: myVariable,
               events: {
@@ -41,26 +48,62 @@
           });
       }
 
-      // 4. The API will call this function when the video player is ready.
+      // Esto ocurre cuando el video esta listo para ser reproducido
       function onPlayerReady(event) {
           event.target.playVideo();
+          progress.max = event.target.getDuration();
+          setInterval(() => {
+            progress.value = player.getCurrentTime();
+          }, 250);
       }
 
       // 5. The API calls this function when the player's state changes.
       //    The function indicates that when playing a video (state=1),
       //    the player should play for six seconds and then stop.
-      var done = false;
+      let done = false;
       function onPlayerStateChange(event) {
           if (event.data == YT.PlayerState.PLAYING && !done) {
-              setTimeout(stopVideo, 6000);
               done = true;
           }
       }
-      function stopVideo() {
+
+      // Esta funcion recarga el video con el valor de 'porgress' cuando el valor de 'progress' cambia
+      progress.onchange = function(){
+        player.seekTo(progress.value);
       }
-      function playVideo(){
+
+      // Esta funcion controla el boton de play/pause
+      function controlSong(){
+        if(player.getPlayerState() == 1){
+          player.pauseVideo();
+          ctrlIconPlayPause.classList.remove("fa-pause");
+          ctrlIconPlayPause.classList.add("fa-play");
+        }else{
           player.playVideo();
+          ctrlIconPlayPause.classList.add("fa-pause");
+          ctrlIconPlayPause.classList.remove("fa-play");
+        }
       }
+
+      function controlMutedSong(){
+        if(player.isMuted() == false){
+          player.mute();
+          ctrlIconMuted.classList.add("fa-volume-mute");
+          ctrlIconMuted.classList.remove("fa-volume-up");
+        }else{
+          player.unMute();
+          ctrlIconMuted.classList.remove("fa-volume-mute");
+          ctrlIconMuted.classList.add("fa-volume-up");
+        }
+      }
+
+  </script>
+  <script>
+
+
+
+
+
   </script>
 </body>
 </html>

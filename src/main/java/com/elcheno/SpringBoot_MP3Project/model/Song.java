@@ -33,8 +33,7 @@ public class Song implements Serializable {
     @JdbcTypeCode(SqlTypes.VARCHAR)
     private String url;
 
-    public Song(int id, String title, String artist, String description, String url) {
-        this.id = id;
+    public Song(String title, String artist, String description, String url) {
         this.title = title;
         this.artist = artist;
         this.description = description;
