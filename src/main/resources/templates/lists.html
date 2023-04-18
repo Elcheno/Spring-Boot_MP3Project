@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>lists</title>
+</head>
+<body>
+    <h1>Listas de canciones</h1>
+    <div>
+        <div th:each="list,iter: ${listSong}">
+            <a th:href="@{/listSong/songs/{idList}(idList=${list.id})}">
+                <span th:text="${list.name}"></span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

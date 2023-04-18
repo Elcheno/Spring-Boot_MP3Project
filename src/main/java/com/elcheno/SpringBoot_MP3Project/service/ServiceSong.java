@@ -21,8 +21,13 @@ public class ServiceSong implements iServiceSong {
     }
 
     @Override
-    public Song fingById(int id) {
+    public Song getSongById(int id) {
         return repository.findById(id);
+    }
+
+    @Override
+    public List<Song> getSongsByListId(int id) {
+        return repository.findByListId(id);
     }
 
     public void save(Song song){repository.save(song);}
