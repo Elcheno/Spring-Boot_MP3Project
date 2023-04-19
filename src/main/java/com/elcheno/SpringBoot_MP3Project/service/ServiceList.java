@@ -21,8 +21,13 @@ public class ServiceList implements iServiceList{
     }
 
     @Override
-    public ListaSong findById(int id) {
+    public ListaSong getListaSongById(int id) {
         return repository.findById(id);
+    }
+
+    @Override
+    public List<ListaSong> getListaSongByCategory(int id) {
+        return repository.findByCategory(id);
     }
 
     public void save(ListaSong listaSong){repository.save(listaSong);}

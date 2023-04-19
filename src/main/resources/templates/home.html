@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+<body>
+  <h1>Home</h1>
+    <div>
+      <div th:each="list,iter: ${lists}">
+      <a th:href="@{/listSong/songs/{idList}(idList=${list.id})}">
+          <span th:text="${list.name}"></span>
+      </a>
+    </div>
+</body>
+</html>

@@ -9,7 +9,11 @@ import com.elcheno.SpringBoot_MP3Project.service.ServiceSong;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
+
+import javax.swing.text.View;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class ControllerSong {
@@ -17,7 +21,7 @@ public class ControllerSong {
     private ServiceList listService; //SERVICIO DE LISTAS
     private ServiceCategory categoryService; //SERVICIO DE CATEGORIAS
 
-    private boolean flagData = false;
+    private boolean flagData = false; // VARIABLE PARA AGREGAR DATOS A FUEGO UNA UNICA VEZ
 
     public ControllerSong(ServiceSong songService, ServiceList listService, ServiceCategory categoryService) { //CONSTRUCTOR
         this.songService = songService;
@@ -25,16 +29,42 @@ public class ControllerSong {
         this.categoryService = categoryService;
     }
 
-    @GetMapping("/listSong")
-    public String listSong(Model model){ //METODO DE LA VISTA 'lists' (LISTA DE LISTAS)
+    @GetMapping("/")//METODO DE LA VISTA 'index' (INICIO)
+    public String index(){
         getData();
+        return "index";
+    }
+
+    @GetMapping("/home")//METODO DE LA VISTA 'home' (INICIO)
+    public String home(Model model){
+        List<ListaSong> lists = listService.getListaSongByCategory(2);
+        model.addAttribute("lists", lists);
+        return "home";
+    }
+
+    @GetMapping("/user")//METODO DE LA VISTA 'user' (LISTA DE LISTAS DE USUARIO)
+    public String user(Model model){
+        List<ListaSong> lists = listService.getListaSongByCategory(1);
+        model.addAttribute("lists", lists);
+        model.addAttribute("newList", new ListaSong());
+        return "user";
+    }
+
+    @PostMapping("/user")//METODO PARA AGREGAR UNA NUEVA LISTA
+    public Object user(@ModelAttribute("newList") ListaSong newList){
+        listService.save(newList);
+        return new RedirectView("/user");
+    }
+
+    @GetMapping("/listSong")//METODO DE LA VISTA 'lists' (LISTA DE LISTAS)
+    public String listSong(Model model){
         List<ListaSong> lists = listService.getAllListaSong();
         model.addAttribute("listSong", lists);
         return "lists";
     }
 
-    @GetMapping("/listSong/songs/{idList}")
-    public String song(Model model, @PathVariable("idList") String idList){ //METODO DE LA VISTA 'song' DE UNA LISTA (LISTA DE CANCIONES)
+    @GetMapping("/listSong/songs/{idList}")//METODO DE LA VISTA 'song' DE UNA LISTA (LISTA DE CANCIONES)
+    public String song(Model model, @PathVariable("idList") String idList){
         List<Song> songs = songService.getSongsByListId(Integer.parseInt(idList));
         model.addAttribute("title", "Canciones de la lista " + idList);
         model.addAttribute("songs", songs);
@@ -42,22 +72,23 @@ public class ControllerSong {
         return "songs";
     }
 
-    @GetMapping("/listSong/songs/rpsong/{idList}/{idSong}")
-    public String rpSong(@PathVariable("idSong") int idSong, Model model){ //METODO DE LA VISTA 'rpsong' (REPRODUCIR CANCION)
+    @GetMapping("/listSong/songs/rpsong/{idList}/{idSong}")//METODO DE LA VISTA 'rpsong' (REPRODUCIR CANCION)
+    public String rpSong(@PathVariable("idSong") int idSong, Model model){
         Song newSong = songService.getSongById(idSong);
         model.addAttribute("newSong", newSong);
         return "rpsong";
     }
 
-    @GetMapping("/songs")
-    public String song(Model model){ //METODO DE LA VISTA 'song' (LISTA DE CANCIONES)
+    @GetMapping("/songs")//METODO DE LA VISTA 'song' (LISTA DE CANCIONES)
+    public String song(Model model){
         List<Song> songs = songService.getAllSongs();
         model.addAttribute("title", "CANCIONES");
         model.addAttribute("songs", songs);
         return "songs";
     }
 
-    public void getData(){ //METODO PARA AGREGAR DATOS A FUEGO
+    //METODO PARA AGREGAR DATOS A FUEGO UNA UNICA VEZ
+    public void getData(){
         if(!flagData){
             categoryService.save(new CategoryList("user")); //id = 1
             categoryService.save(new CategoryList("system")); //id = 2

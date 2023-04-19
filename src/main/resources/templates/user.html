@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>user</title>
+</head>
+<body>
+  <h1>user</h1>
+    <div>
+      <div th:each="list,iter: ${lists}">
+      <a th:href="@{/listSong/songs/{idList}(idList=${list.id})}">
+          <span th:text="${list.name}"></span>
+      </a>
+    </div>
+    <div>
+        <form th:action="@{user}" method="post" th:object="${newList}">
+            <input type="text" name="name" placeholder="name">
+            <input type="text" name="description" placeholder="description">
+            <input type="submit" value="submit">
+        </form>
+    </div>
+</body>
+</html>

@@ -5,6 +5,6 @@ import java.util.List;
 
 public interface iServiceList {
     List<ListaSong> getAllListaSong();
-    ListaSong findById(int id);
-
+    ListaSong getListaSongById(int id);
+    List<ListaSong> getListaSongByCategory(int id);
 }
