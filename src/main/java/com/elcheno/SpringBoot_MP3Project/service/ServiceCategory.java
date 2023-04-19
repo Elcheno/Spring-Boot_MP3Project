@@ -19,6 +19,11 @@ public class ServiceCategory implements iServiceCategory{
         return repository.findAll();
     }
 
+    @Override
+    public CategoryList getCategoryListById(int id) {
+        return repository.findById(id);
+    }
+
     public void save(CategoryList category){
         repository.save(category);
     }

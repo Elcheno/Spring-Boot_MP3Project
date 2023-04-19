@@ -5,13 +5,14 @@ import lombok.Data;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Entity
 @Table(name = "listas")
-public class ListaSong {
+public class ListaSong implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
@@ -32,12 +33,24 @@ public class ListaSong {
             inverseJoinColumns = @JoinColumn(name = "songs_id"))
     private List<Song> songs = new ArrayList<>();
 
-    public ListaSong(String name, String description) {
+    @ManyToOne
+    @JoinColumn(name = "category_list_id")
+    private CategoryList categoryList;
+
+    public ListaSong(String name, String description, CategoryList categoryList) {
         this.name = name;
         this.description = description;
+        this.categoryList = categoryList;
     }
 
     public ListaSong() {
 
     }
+
+    public void addSong(Song song){
+        songs.add(song);
+    }
+
+
+
 }

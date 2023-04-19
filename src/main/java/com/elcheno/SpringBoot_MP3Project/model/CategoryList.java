@@ -5,13 +5,14 @@ import lombok.Data;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Entity
 @Table(name = "categories")
-public class CategoryList {
+public class CategoryList implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -22,15 +23,18 @@ public class CategoryList {
     @JdbcTypeCode(SqlTypes.VARCHAR)
     private String description;
 
-    @ManyToMany
-    @JoinTable(name = "categories_lista_songs",
-            joinColumns = @JoinColumn(name = "category_list_id"),
-            inverseJoinColumns = @JoinColumn(name = "lista_songs_id"))
+    @OneToMany(mappedBy = "categoryList", orphanRemoval = true)
     private List<ListaSong> listaSongs = new ArrayList<>();
+
 
     public CategoryList(String description) {
         this.description = description;
     }
     public CategoryList() {
     }
+
+    public void addListaSong(ListaSong listaSong){
+        listaSongs.add(listaSong);
+    }
+
 }

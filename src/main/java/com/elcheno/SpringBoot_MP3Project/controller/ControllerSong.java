@@ -52,6 +52,7 @@ public class ControllerSong {
 
     @PostMapping("/user")//METODO PARA AGREGAR UNA NUEVA LISTA
     public Object user(@ModelAttribute("newList") ListaSong newList){
+        newList.setCategoryList(categoryService.getCategoryListById(1));
         listService.save(newList);
         return new RedirectView("/user");
     }
@@ -90,18 +91,37 @@ public class ControllerSong {
     //METODO PARA AGREGAR DATOS A FUEGO UNA UNICA VEZ
     public void getData(){
         if(!flagData){
-            categoryService.save(new CategoryList("user")); //id = 1
-            categoryService.save(new CategoryList("system")); //id = 2
+            CategoryList category1 = new CategoryList("user");//id = 1
+            ListaSong lista4 = new ListaSong("Lista4", "description", category1);
+            category1.addListaSong(lista4);
 
-            listService.save(new ListaSong("Lista1", "description"));
-            listService.save(new ListaSong("Lista2", "description"));
-            listService.save(new ListaSong("Lista3", "description"));
-            listService.save(new ListaSong("Lista4", "description"));
+            CategoryList category2 = new CategoryList("system");//id = 2
+            ListaSong lista1 = new ListaSong("Lista1", "description", category2);
+            ListaSong lista2 = new ListaSong("Lista2", "description", category2);
+            ListaSong lista3 = new ListaSong("Lista3", "description", category2);
+            Song song1 = new Song("Triste Verano", "description", "Eladio Carrión", "SQymtMNE9BU");
+            Song song2 = new Song("Coco Chanel", "description", "Eladio Carrión", "j1VVY2sEdC0");
+            Song song3 = new Song("Si La Calle Llama Remix", "description", "Eladio Carrión", "_REASiFeT_g");
+            Song song4 = new Song("Hola Cómo Vas", "description", "Eladio Carrión", "PKoBuyUfQSo");
+            lista1.addSong(song1);
+            lista1.addSong(song2);
+            lista2.addSong(song3);
+            lista2.addSong(song4);
+            category2.addListaSong(lista1);
+            category2.addListaSong(lista2);
+            category2.addListaSong(lista3);
+            songService.save(song1);
+            songService.save(song2);
+            songService.save(song3);
+            songService.save(song4);
+            categoryService.save(category1);
+            categoryService.save(category2);
+            listService.save(lista1);
+            listService.save(lista2);
+            listService.save(lista3);
+            listService.save(lista4);
 
-            songService.save(new Song("Triste Verano", "description", "Eladio Carrión", "SQymtMNE9BU"));
-            songService.save(new Song("Coco Chanel", "description", "Eladio Carrión", "j1VVY2sEdC0"));
-            songService.save(new Song("Si La Calle Llama Remix", "description", "Eladio Carrión", "_REASiFeT_g"));
-            songService.save(new Song("Hola Cómo Vas", "description", "Eladio Carrión", "PKoBuyUfQSo"));
+
             flagData = true;
             /*
             * CONSULTAS SQL PARA AGREGAR LAS RELACIONES DE LAS TABLAS:
