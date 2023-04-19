@@ -11,9 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
-import javax.swing.text.View;
 import java.util.List;
-import java.util.Objects;
 
 @Controller
 public class ControllerSong {
@@ -29,17 +27,68 @@ public class ControllerSong {
         this.categoryService = categoryService;
     }
 
-    @GetMapping("/")//METODO DE LA VISTA 'index' (INICIO)
-    public String index(){
-        getData();
-        return "index";
-    }
-
     @GetMapping("/home")//METODO DE LA VISTA 'home' (INICIO)
     public String home(Model model){
+        getData();
         List<ListaSong> lists = listService.getListaSongByCategory(2);
         model.addAttribute("lists", lists);
         return "home";
+    }
+
+    @GetMapping("/listSong")//METODO DE LA VISTA 'lists' (LISTA DE LISTAS)
+    public String listSong(Model model){
+        List<ListaSong> lists = listService.getAllListaSong();
+        model.addAttribute("listSong", lists);
+        return "lists";
+    }
+
+    @GetMapping("/listSong/songs/{idList}")//METODO DE LA VISTA 'song' DEL 'system' DE UNA LISTA (LISTA DE CANCIONES)
+    public String songSystem(Model model, @PathVariable("idList") String idList){
+        List<Song> songs = songService.getSongsByListId(Integer.parseInt(idList));
+        ListaSong listId = listService.getListaSongById(Integer.parseInt(idList));
+        List<ListaSong> lists = listService.getListaSongByCategory(1);
+        model.addAttribute("title", listId.getName());
+        model.addAttribute("songs", songs);
+        model.addAttribute("idList", idList);
+        model.addAttribute("lists", lists);
+        return "songsSystem";
+    }
+
+    @GetMapping("/listSong/songsUser/{idList}")//METODO DE LA VISTA 'song' DEL 'user' DE UNA LISTA (LISTA DE CANCIONES)
+    public String songUser(Model model, @PathVariable("idList") String idList){
+        List<Song> songs = songService.getSongsByListId(Integer.parseInt(idList));
+        ListaSong listId = listService.getListaSongById(Integer.parseInt(idList));
+        List<ListaSong> lists = listService.getListaSongByCategory(1);
+        model.addAttribute("title", listId.getName());
+        model.addAttribute("songs", songs);
+        model.addAttribute("idList", idList);
+        model.addAttribute("lists", lists);
+        return "songsUser";
+    }
+
+    @PostMapping("/listSong/songs/{idList}/{idNewList}/{idSong}")//METODO PARA AGREGAR UNA CANCION A UNA LISTA
+    public Object addSong(@PathVariable("idList") String idList, @PathVariable("idNewList") String idNewList, @PathVariable("idSong") String idSong){
+        Song newSong = songService.getSongById(Integer.parseInt(idSong));
+        ListaSong newList = listService.getListaSongById(Integer.parseInt(idNewList));
+        newList.addSong(newSong);
+        listService.save(newList);
+        return new RedirectView("/listSong/songs/"+idList);
+    }
+
+    @PostMapping("/listSong/songs/{idList}/{idSong}")//METODO PARA ELIMINAR UNA CANCION DE UNA LISTA
+    public Object removeSong(@PathVariable("idList") String idList, @PathVariable("idSong") String idSong, Model model){
+        Song newSong = songService.getSongById(Integer.parseInt(idSong));
+        ListaSong newList = listService.getListaSongById(Integer.parseInt(idList));
+        newList.removeSong(newSong);
+        listService.save(newList);
+        return new RedirectView("/listSong/songs/"+idList);
+    }
+
+    @GetMapping("/listSong/songs/rpsong/{idList}/{idSong}")//METODO DE LA VISTA 'rpsong' (REPRODUCIR CANCION)
+    public String rpSong(@PathVariable("idSong") int idSong, Model model){
+        Song newSong = songService.getSongById(idSong);
+        model.addAttribute("newSong", newSong);
+        return "rpsong";
     }
 
     @GetMapping("/user")//METODO DE LA VISTA 'user' (LISTA DE LISTAS DE USUARIO)
@@ -57,35 +106,10 @@ public class ControllerSong {
         return new RedirectView("/user");
     }
 
-    @GetMapping("/listSong")//METODO DE LA VISTA 'lists' (LISTA DE LISTAS)
-    public String listSong(Model model){
-        List<ListaSong> lists = listService.getAllListaSong();
-        model.addAttribute("listSong", lists);
-        return "lists";
-    }
-
-    @GetMapping("/listSong/songs/{idList}")//METODO DE LA VISTA 'song' DE UNA LISTA (LISTA DE CANCIONES)
-    public String song(Model model, @PathVariable("idList") String idList){
-        List<Song> songs = songService.getSongsByListId(Integer.parseInt(idList));
-        model.addAttribute("title", "Canciones de la lista " + idList);
-        model.addAttribute("songs", songs);
-        model.addAttribute("idList", idList);
-        return "songs";
-    }
-
-    @GetMapping("/listSong/songs/rpsong/{idList}/{idSong}")//METODO DE LA VISTA 'rpsong' (REPRODUCIR CANCION)
-    public String rpSong(@PathVariable("idSong") int idSong, Model model){
-        Song newSong = songService.getSongById(idSong);
-        model.addAttribute("newSong", newSong);
-        return "rpsong";
-    }
-
-    @GetMapping("/songs")//METODO DE LA VISTA 'song' (LISTA DE CANCIONES)
-    public String song(Model model){
-        List<Song> songs = songService.getAllSongs();
-        model.addAttribute("title", "CANCIONES");
-        model.addAttribute("songs", songs);
-        return "songs";
+    @PostMapping("/user/{id}") //METODO PARA ELIMINAR UNA LISTA
+    public Object eliminarAlumno(@PathVariable int id) {
+        listService.removeListSong(id);
+        return new RedirectView("/user");
     }
 
     //METODO PARA AGREGAR DATOS A FUEGO UNA UNICA VEZ

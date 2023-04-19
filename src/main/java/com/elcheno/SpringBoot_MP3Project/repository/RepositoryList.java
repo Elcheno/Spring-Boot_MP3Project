@@ -17,4 +17,5 @@ public interface RepositoryList extends JpaRepository<ListaSong, Long> {
     @Query(value = "SELECT * FROM listas WHERE category_list_id=?1", nativeQuery = true)
     public List<ListaSong> findByCategory(int id); //devuelve una lista de canciones por su categoria
 
+    void deleteById(int id); //elimina una cancion por su id
 }

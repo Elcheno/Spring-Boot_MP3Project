@@ -7,13 +7,20 @@
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <a th:href="@{/songs}">
-    <button><i class="fas fa-chevron-left"></i></button>
-  </a>
-  <h1>Reproductor de canciones</h1>
+
+  <div>
+    <div>
+      <div><button onclick="history.go(-1);"><i class="fas fa-angle-left"></i></button></div>
+      <div><h1>Reproductor de canciones</h1>
+      </div>
+    </div>
+    <div><a th:href="@{/user}"><button><i class="fas fa-user"></i></button></a></div>
+  </div>
+
   <h1 th:text="${newSong.url}" id="urlSong" style="display: none"></h1>
   <h2><span th:text="${newSong.title}"></span></h2>
   <div id="player"></div>
+
   <hr>
   <input type="range" value="0" id="progress" max="0">
   <button onclick="controlSong()"><i class="fas fa-pause" id="ctrlIconPlayPause"></i></button>

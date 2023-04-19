@@ -3,6 +3,7 @@ package com.elcheno.SpringBoot_MP3Project.service;
 import com.elcheno.SpringBoot_MP3Project.model.ListaSong;
 import com.elcheno.SpringBoot_MP3Project.repository.RepositoryList;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -31,4 +32,7 @@ public class ServiceList implements iServiceList{
     }
 
     public void save(ListaSong listaSong){repository.save(listaSong);}
+
+    @Transactional
+    public void removeListSong(int id){repository.deleteById(id);}
 }

@@ -51,6 +51,8 @@ public class ListaSong implements Serializable {
         songs.add(song);
     }
 
-
+    public void removeSong(Song song){
+        songs.remove(song);
+    }
 
 }
