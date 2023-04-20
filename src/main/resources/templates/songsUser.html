@@ -23,7 +23,7 @@
                 </a>
             </div>
             <div>
-                <form th:each="listaSong,iter: ${lists}" th:action="@{/listSong/songs/{idList}/{idSong}(idList=${idList}, idSong=${song.id})}" method="post">
+                <form th:action="@{/listSong/songs/{idList}/{idSong}(idList=${idList}, idSong=${song.id})}" method="post">
                     <button type="submit"><i class="fas fa-minus"></i></button>
                 </form>
             </div>

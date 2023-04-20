@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
-
 import java.util.List;
 
 @Controller
@@ -81,7 +80,7 @@ public class ControllerSong {
         ListaSong newList = listService.getListaSongById(Integer.parseInt(idList));
         newList.removeSong(newSong);
         listService.save(newList);
-        return new RedirectView("/listSong/songs/"+idList);
+        return new RedirectView("/listSong/songsUser/"+idList);
     }
 
     @GetMapping("/listSong/songs/rpsong/{idList}/{idSong}")//METODO DE LA VISTA 'rpsong' (REPRODUCIR CANCION)
@@ -107,7 +106,7 @@ public class ControllerSong {
     }
 
     @PostMapping("/user/{id}") //METODO PARA ELIMINAR UNA LISTA
-    public Object eliminarAlumno(@PathVariable int id) {
+    public Object removeListSong(@PathVariable int id) {
         listService.removeListSong(id);
         return new RedirectView("/user");
     }
