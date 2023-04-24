@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>user</title>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/userList.css">
 </head>
 <body>
     <div>
@@ -13,26 +14,76 @@
         </div>
     </div>
 
-    <div th:each="list,iter: ${lists}">
-      <div>
-          <a th:href="@{/listSong/songsUser/{idList}(idList=${list.id})}"><span th:text="${list.name}"></span></a>
-      </div>
-      <div>
-          <form th:action="@{/user/{id}(id=${list.id})}" method="post">
-              <button type="submit"><i class="fas fa-minus"></i></button>
-          </form>
-      </div>
-    </div>
     <hr>
-
-    <div>
-        <form th:action="@{user}" method="post" th:object="${newList}">
+    <div style="display: flex;flex-direction: row">
+        <div>
+            <button onclick="addNewList()"><i class="fas fa-plus"></i></button>
+        </div>
+        <form th:action="@{user}" method="post" th:object="${newList}" id="formNewList">
             <div>
                 <input type="text" name="name" placeholder="name">
                 <input type="text" name="description" placeholder="description">
-                <input type="submit" value="submit">
+                <button type="submit"><i class="fas fa-save" onclick="saveNewListForm()"></i></button>
             </div>
         </form>
     </div>
+    <hr>
+
+    <div th:each="list,iter: ${lists}">
+        <div id="listsSongs">
+            <div>
+                <a th:href="@{/listSong/songsUser/{idList}(idList=${list.id})}" class="list"><span th:text="${list.name}"></span></a>
+            </div>
+            <div>
+                <button id="btnEditList" onclick="editSong()"><i class="fas fa-edit"></i></button>
+            </div>
+            <div>
+                <form th:action="@{/user/{id}(id=${list.id})}" method="post">
+                    <button type="submit"><i class="fas fa-minus"></i></button>
+                </form>
+            </div>
+        </div>
+        <div id="listsSongsForm">
+            <form th:action="@{/user/{id}(id=${list.id})}" method="post" th:object="${list}">
+                <div>
+                    <input type="text" name="name" placeholder="name" th:value="*{name}">
+                    <input type="text" name="description" placeholder="description" th:value="*{description}">
+                    <button type="submit"><i class="fas fa-save" id="btnSaveListForm" onclick="saveListForm()"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr>
+
+    <script>
+
+        let listSongsForm = document.getElementById("listsSongsForm");
+        let listSongs = document.getElementById("listsSongs");
+        let formNewList = document.getElementById("formNewList");
+
+
+        function editSong(){
+            listSongs.style.display = "none";
+            listSongsForm.style.display = "flex";
+        }
+        function saveListForm(){
+            listSongsForm.style.display = "none";
+            listSongs.style.display = "flex";
+        }
+
+        function addNewList(){
+            if(formNewList.style.display === "flex"){
+                formNewList.style.display = "none";
+            }else{
+                formNewList.style.display = "flex"
+            }
+        }
+
+        function saveNewListForm(){
+            formNewList.style.display = "none";
+        }
+
+    </script>
+
 </body>
 </html>

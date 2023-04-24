@@ -1,0 +1,18 @@
+#listsSongsForm{
+    display:none;
+    flex-direction: row;
+}
+
+#listsSongs{
+    display:flex;
+    flex-direction: row;
+}
+
+.list{
+    text-decoration: none;
+    color: black;
+}
+
+#formNewList{
+    display:none;
+}

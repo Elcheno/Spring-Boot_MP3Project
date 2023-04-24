@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 import java.util.List;
 
+
 @Controller
 public class ControllerSong {
     private ServiceSong songService; //SERVICIO DE CANCIONES
@@ -105,9 +106,16 @@ public class ControllerSong {
         return new RedirectView("/user");
     }
 
-    @PostMapping("/user/{id}") //METODO PARA ELIMINAR UNA LISTA
+    @DeleteMapping("/user/{id}") //METODO PARA ELIMINAR UNA LISTA
     public Object removeListSong(@PathVariable int id) {
         listService.removeListSong(id);
+        return new RedirectView("/user");
+    }
+
+    @PostMapping("/user/{id}") //METODO PARA ACTUALIZAR UNA LISTA
+    public Object updateListSong(@ModelAttribute("list") ListaSong newList) {
+        newList.setCategoryList(categoryService.getCategoryListById(1));
+        listService.save(newList);
         return new RedirectView("/user");
     }
 
