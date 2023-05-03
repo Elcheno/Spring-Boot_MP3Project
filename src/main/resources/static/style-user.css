@@ -1,9 +1,10 @@
-#listsSongsForm{
+.listsSongsForm{
     display:none;
     flex-direction: row;
 }
 
-#listsSongs{
+
+.listsSongs{
     display:flex;
     flex-direction: row;
 }
@@ -16,3 +17,11 @@
 #formNewList{
     display:none;
 }
+
+/*#gracias{*/
+/*    position: fixed;*/
+/*    bottom: 0;*/
+/*    right: 0;*/
+/*    font-size: 15px;*/
+/*    color: lightcyan;*/
+/*}*/

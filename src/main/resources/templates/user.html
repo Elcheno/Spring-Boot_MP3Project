@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:div="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>user</title>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/userList.css">
+    <link rel="stylesheet" href="/style-user.css">
 </head>
 <body>
     <div>
@@ -29,49 +29,61 @@
     </div>
     <hr>
 
-    <div th:each="list,iter: ${lists}">
-        <div id="listsSongs">
-            <div>
-                <a th:href="@{/listSong/songsUser/{idList}(idList=${list.id})}" class="list"><span th:text="${list.name}"></span></a>
-            </div>
-            <div>
-                <button id="btnEditList" onclick="editSong()"><i class="fas fa-edit"></i></button>
-            </div>
-            <div>
-                <form th:action="@{/user/{id}(id=${list.id})}" method="post">
-                    <button type="submit"><i class="fas fa-minus"></i></button>
-                </form>
-            </div>
-        </div>
-        <div id="listsSongsForm">
-            <form th:action="@{/user/{id}(id=${list.id})}" method="post" th:object="${list}">
-                <div>
-                    <input type="text" name="name" placeholder="name" th:value="*{name}">
-                    <input type="text" name="description" placeholder="description" th:value="*{description}">
-                    <button type="submit"><i class="fas fa-save" id="btnSaveListForm" onclick="saveListForm()"></i></button>
+    <div>
+        <th:block th:each="list,iter: ${lists}">
+            <div th:object="${list}">
+                <div class="listsSongs">
+                    <div>
+                        <a th:href="@{/listSong/songsUser/{idList}(idList=${list.id})}" class="list"><span th:text="${list.name}"></span></a>
+                    </div>
+                    <div>
+                        <button th:attr="onclick=|editSong('${iter.count}')|" id="btnEditList"><i class="fas fa-edit"></i></button>
+                    </div>
+                    <div>
+                        <form th:action="@{/user/{id}(id=${list.id})}" method="post">
+                            <button type="submit"><i class="fas fa-minus"></i></button>
+                        </form>
+                    </div>
                 </div>
-            </form>
-        </div>
+                <div class="listsSongsForm">
+                    <form th:action="@{/user/{id}(id=${list.id})}" method="post" th:object="${list}">
+                        <div>
+                            <input type="text" name="name" placeholder="name" th:value="*{name}">
+                            <input type="text" name="description" placeholder="description" th:value="*{description}">
+                            <button type="submit" onclick="saveListForm()"><i class="fas fa-save" id="btnSaveListForm"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </th:block>
     </div>
     <hr>
-
+    <!--    <a id="gracias" href="">gracias, señor todopoderoso</a>-->
     <script>
 
-        let listSongsForm = document.getElementById("listsSongsForm");
-        let listSongs = document.getElementById("listsSongs");
-        let formNewList = document.getElementById("formNewList");
+        function editSong(i){
+            console.log(i);
+            const formSong = document.getElementsByClassName("listsSongsForm");
+            const listSong = document.getElementsByClassName("listsSongs");
+
+            formSong[i-1].style.display = "flex";
+            listSong[i-1].style.display = "none";
 
 
-        function editSong(){
-            listSongs.style.display = "none";
-            listSongsForm.style.display = "flex";
+            //.getElementById("listsSongsForm").style.display = "flex";
+            //document.getElementById("listsSongs").style.display = "none";
         }
         function saveListForm(){
-            listSongsForm.style.display = "none";
-            listSongs.style.display = "flex";
+            let listSongsForm = document.getElementsByClassName("listsSongsForm");
+            let listSongs = document.getElementsByClassName("listsSongs");
+            for (const listForm of listSongsForm) {
+                listForm.style.display = "none";
+                listSongs.style.display = "flex";
+            }
         }
 
         function addNewList(){
+            let formNewList = document.getElementById("formNewList");
             if(formNewList.style.display === "flex"){
                 formNewList.style.display = "none";
             }else{
@@ -80,10 +92,10 @@
         }
 
         function saveNewListForm(){
+            let formNewList = document.getElementById("formNewList");
             formNewList.style.display = "none";
         }
 
     </script>
-
 </body>
 </html>
