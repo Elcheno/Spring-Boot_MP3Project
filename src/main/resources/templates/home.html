@@ -3,19 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>home</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div>
-        <div><h1>Home</h1></div>
-        <div><a th:href="@{/user}"><button><i class="fas fa-user"></i></button></a></div>
+
+    <div class="wrapper">
+
+        <div class="header">
+
+            <div class="logo">
+<!--                <a th:href="@{/home}">-->
+
+<!--                </a>-->
+            </div>
+
+            <div class="navbar">
+                <div>
+                    <a th:href="@{/user}">
+                        <button class="btnUser">
+                            <i class="fas fa-user"></i>
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="path">
+            <div><p>HOME</p></div>
+        </div>
+
+
+        <div class="contentLists">
+
+            <div th:each="list,iter: ${lists}" class="listLists">
+                <div th:class="${list.name}">
+                    <a th:href="@{/listSong/songs/{idList}(idList=${list.id})}" class="list">
+                        <div class="nameList">
+                            <p> <span th:text="${list.name}"/></p>
+                        </div>
+                        <div class="descriptionList">
+                            <p> <span th:text="${list.description}"/></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
-    <div>
-      <div th:each="list,iter: ${lists}">
-      <a th:href="@{/listSong/songs/{idList}(idList=${list.id})}">
-          <span th:text="${list.name}"></span>
-      </a>
-    </div>
 </body>
 </html>

@@ -1,0 +1,221 @@
+// Colours
+$black: #000000;
+$white: #ffffff;
+$lightblue: #12d5b0;
+$lightgrey: #d0cfcf;
+
+@import "mixins";
+
+
+// Sizes
+$xs: 300px;
+$md: 768px;
+$lg: 900px;
+$v0: 0px;
+$v5: 5px;
+$v15: 15px;
+$v20: 20px;
+$v175: 175px;
+$v250: 250px;
+$v600: 600px;
+$v700: 700px;
+$nav-w: 175px;
+
+
+// Function
+
+
+
+// Theme
+body{
+  @include pm-0;
+  font-family: "Bodoni MT", serif;
+}
+
+
+.wrapper{
+  background-color: $white;
+
+  .header{
+    @include flex-row;
+    justify-content: space-between;
+    background-color: $lightgrey;
+
+    .navbar{
+      @include flex-center;
+      margin-right: $v20;
+
+    }
+
+  }
+
+}
+
+
+.path{
+  @include flex-center;
+
+  p{
+    font-size: 40px;
+    font-weight: bold;
+
+  }
+}
+
+.contentLists{
+  padding: $v20;
+  background-color: $lightgrey;
+  row-gap: 3em;
+  margin: 0px 100px;
+  margin-bottom: 2em;
+  border-radius: 12px;
+
+  .listLists{
+    @include sizes($v250, $v600);
+    padding: $v5;
+    background-color: $white;
+    border-radius: 12px;
+
+    .list{
+      @include flex-column;
+      @include sizes($v250, $v600);
+      row-gap: 4em;
+      color: $white;
+      font-weight: bold;
+
+      .nameList{
+        @include flex-start;
+        font-size: 2em;
+        margin-left: $v15;
+
+      }
+      .descriptionList{
+        @include flex-end;
+        font-size: 1.8em;
+        margin-right: $v15;
+
+      }
+    }
+
+    a{
+      text-decoration: none;
+      color: $black;
+    }
+  }
+}
+
+.Reggeton{
+  @include bg-img("../img/badBunny.jpg", $v600);
+  transition: background-position, 2s;
+}
+
+.Reggeton:hover{
+  background-position: bottom;
+}
+
+.Rock{
+  @include bg-img("../img/rock.jpg", $v600);
+  transition: background-position, 2s;
+}
+
+.Rock:hover{
+  background-position: bottom;
+}
+
+.Rap{
+  @include bg-img("../img/rap.jpg", $v600);
+  transition: background-position, 2s;
+}
+
+.Rap:hover{
+  background-position: bottom;
+}
+
+.Electronic{
+  @include bg-img("../img/electronic.jpg", $v600);
+  transition: background-position, 2s;
+}
+
+.Electronic:hover{
+  background-position: bottom;
+}
+
+.Pop{
+  @include bg-img("../img/pop.png", $v600);
+  transition: background-position, 2s;
+}
+
+.Pop:hover{
+  background-position: bottom;
+}
+
+.Flamenco{
+  @include bg-img("../img/flamenco.jpg", $v600);
+  transition: background-position, 2s;
+}
+
+.Flamenco:hover{
+  background-position: bottom;
+}
+
+@media (max-width: 768px){
+  .logo{
+    @include sizes(175px, 275px);
+    @include bg-img("../img/MP3Project-Logo.png", $v250);
+
+  }
+  .contentLists{
+    @include flex-column;
+    @include flex-center;
+
+  }
+
+  .btnUser{
+    background-color: $white;
+    @include sizes(75px, 75px);
+    border-radius: 12px;
+    i{
+      font-size: 2em;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px){
+  .logo{
+    @include sizes(175px, 275px);
+    @include bg-img("../img/MP3Project-Logo.png", $v250);
+  }
+  .contentLists{
+    @include flex-column;
+    @include flex-center;
+
+  }
+  .btnUser{
+    background-color: $white;
+    @include sizes(75px, 75px);
+    border-radius: 12px;
+    i{
+      font-size: 2em;
+    }
+  }
+}
+
+@media (min-width: 1024px){
+  .logo{
+    @include sizes(100px, 275px);
+    @include bg-img("../img/MP3Project-Logo.png", 200px);
+  }
+  .contentLists{
+    @include flex-row;
+    @include flex-center;
+
+  }
+  .btnUser{
+    background-color: $white;
+    @include sizes(50px, 50px);
+    border-radius: 12px;
+    i{
+      font-size: 1.2em;
+    }
+  }
+}

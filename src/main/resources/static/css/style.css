@@ -1,0 +1,231 @@
+body {
+  padding: 0px;
+  margin: 0px;
+  font-family: "Bodoni MT", serif;
+}
+
+.wrapper {
+  background-color: #ffffff;
+}
+.wrapper .header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 1.5em;
+  justify-content: space-between;
+  background-color: #d0cfcf;
+}
+.wrapper .header .navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.path {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.path p {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.contentLists {
+  padding: 20px;
+  background-color: #d0cfcf;
+  row-gap: 3em;
+  margin: 0px 100px;
+  margin-bottom: 2em;
+  border-radius: 12px;
+}
+.contentLists .listLists {
+  width: 600px;
+  height: 250px;
+  padding: 5px;
+  background-color: #ffffff;
+  border-radius: 12px;
+}
+.contentLists .listLists .list {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  height: 250px;
+  row-gap: 4em;
+  color: #ffffff;
+  font-weight: bold;
+}
+.contentLists .listLists .list .nameList {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  font-size: 2em;
+  margin-left: 15px;
+}
+.contentLists .listLists .list .descriptionList {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  font-size: 1.8em;
+  margin-right: 15px;
+}
+.contentLists .listLists a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.Reggeton {
+  background-image: url("../img/badBunny.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 600px;
+  transition: background-position, 2s;
+}
+
+.Reggeton:hover {
+  background-position: bottom;
+}
+
+.Rock {
+  background-image: url("../img/rock.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 600px;
+  transition: background-position, 2s;
+}
+
+.Rock:hover {
+  background-position: bottom;
+}
+
+.Rap {
+  background-image: url("../img/rap.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 600px;
+  transition: background-position, 2s;
+}
+
+.Rap:hover {
+  background-position: bottom;
+}
+
+.Electronic {
+  background-image: url("../img/electronic.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 600px;
+  transition: background-position, 2s;
+}
+
+.Electronic:hover {
+  background-position: bottom;
+}
+
+.Pop {
+  background-image: url("../img/pop.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 600px;
+  transition: background-position, 2s;
+}
+
+.Pop:hover {
+  background-position: bottom;
+}
+
+.Flamenco {
+  background-image: url("../img/flamenco.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 600px;
+  transition: background-position, 2s;
+}
+
+.Flamenco:hover {
+  background-position: bottom;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    width: 275px;
+    height: 175px;
+    background-image: url("../img/MP3Project-Logo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 250px;
+  }
+  .contentLists {
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .btnUser {
+    background-color: #ffffff;
+    width: 75px;
+    height: 75px;
+    border-radius: 12px;
+  }
+  .btnUser i {
+    font-size: 2em;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .logo {
+    width: 275px;
+    height: 175px;
+    background-image: url("../img/MP3Project-Logo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 250px;
+  }
+  .contentLists {
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .btnUser {
+    background-color: #ffffff;
+    width: 75px;
+    height: 75px;
+    border-radius: 12px;
+  }
+  .btnUser i {
+    font-size: 2em;
+  }
+}
+@media (min-width: 1024px) {
+  .logo {
+    width: 275px;
+    height: 100px;
+    background-image: url("../img/MP3Project-Logo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 200px;
+  }
+  .contentLists {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .btnUser {
+    background-color: #ffffff;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+  }
+  .btnUser i {
+    font-size: 1.2em;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -29,7 +29,7 @@ public class ControllerSong {
 
     @GetMapping("/home")//METODO DE LA VISTA 'home' (INICIO)
     public String home(Model model){
-        getData();
+//        getData();
         List<ListaSong> lists = listService.getListaSongByCategory(2);
         model.addAttribute("lists", lists);
         return "home";
