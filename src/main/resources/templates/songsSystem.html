@@ -43,7 +43,7 @@
 
                 <div class="drop">
                     <div class="dropdown">
-                        <button><i class="fas fa-plus"></i></button>
+                        <button class="btnAddList"><i class="fas fa-plus"></i></button>
                         <div class="dropdown-content">
                             <form th:each="listaSong,iter: ${lists}" th:action="@{/listSong/songs/{idList}/{idNewList}/{idSong}(idList=${idList}, idNewList=${listaSong.id}, idSong=${song.id})}" method="post" class="form-dropdown">
                                 <button type="submit"><span th:text="${listaSong.name}"></span></button>

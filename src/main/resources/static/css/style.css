@@ -131,6 +131,14 @@ body {
   position: relative;
   width: 100px;
 }
+.dropdown .btnAddList {
+  border: none;
+  background-color: transparent;
+  transition: transform, 1s;
+}
+.dropdown .btnAddList:hover {
+  transform: rotate(90deg);
+}
 .dropdown .dropdown-content {
   display: none;
   position: absolute;
@@ -310,7 +318,7 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     column-gap: 1.5em;
-    justify-content: space-evenly;
+    justify-content: center;
     row-gap: 1.5em;
   }
   .btnUser {

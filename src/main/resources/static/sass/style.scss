@@ -119,54 +119,30 @@ body{
     transition: background-position, 2s;
   }
 
-  //.Reggeton:hover{
-  //  background-position: bottom;
-  //}
-
   .Rock{
     @include bg-img("../img/rock.jpg", $v600);
     transition: background-position, 2s;
   }
-
-  //.Rock:hover{
-  //  background-position: bottom;
-  //}
 
   .Rap{
     @include bg-img("../img/rap.jpg", $v600);
     transition: background-position, 2s;
   }
 
-  //.Rap:hover{
-  //  background-position: bottom;
-  //}
-
   .Electronic{
     @include bg-img("../img/electronic.jpg", $v600);
     transition: background-position, 2s;
   }
-
-  //.Electronic:hover{
-  //  background-position: bottom;
-  //}
 
   .Pop{
     @include bg-img("../img/pop.png", $v600);
     transition: background-position, 2s;
   }
 
-  //.Pop:hover{
-  //  background-position: bottom;
-  //}
-
   .Flamenco{
     @include bg-img("../img/flamenco.jpg", $v600);
     transition: background-position, 2s;
   }
-
-  //.Flamenco:hover{
-  //  background-position: bottom;
-  //}
 }
 
 
@@ -174,6 +150,16 @@ body{
   display: inline-block;
   position: relative;
   width: 100px;
+
+  .btnAddList{
+    border: none;
+    background-color: transparent;
+    transition: transform, 1s;
+  }
+
+  .btnAddList:hover{
+    transform: rotate(90deg);
+  }
 
   .dropdown-content{
     display: none;
@@ -217,12 +203,14 @@ body{
     @include flex-row;
     column-gap: 0;
     border-radius: 12px;
+    background-color: $white;
 
 
     .songInfo{
-      background-color: $black;
       height: 150px;
       width: 350px;
+
+
       a{
         @include flex-column;
         row-gap: 2em;
@@ -244,15 +232,20 @@ body{
       align-items: end;
       text-align: center;
       padding: $v10;
-      background-color: red;
+      background-color: $lightblue;
       width: 50px;
     }
   }
 
 }
 
-
-
+$flag: false;
+$i = 1;
+@while $flag != true{
+  .#{$i}{
+    background-image: url("../img/1.jpg");
+  }
+}
 
 
 @media (max-width: 768px){
@@ -341,7 +334,7 @@ body{
 
   .contentSong{
     @include flex-row;
-    justify-content: space-evenly;
+    justify-content: center;
     row-gap: 1.5em;
   }
 

@@ -1,5 +1,5 @@
 -- INSERT LISTs
-INSERT INTO listas (description, name, categoty_list_id) VALUES
+INSERT INTO listas (description, name, category_list_id) VALUES
 ('Reggeton List of Music', 'Reggeton', 2),
 ('Rock List of Music', 'Rock', 2), 
 ('Rap List of Music', 'Rap', 2), 
