@@ -19,7 +19,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  justify-content: space-evenly;
   margin-right: 20px;
+  column-gap: 1.5em;
+}
+.wrapper .header .navbar button {
+  cursor: pointer;
 }
 
 .path {
@@ -74,68 +79,46 @@ body {
   text-decoration: none;
   color: #000000;
 }
+.contentLists .listLists div:hover {
+  background-position: bottom;
+}
 
-.Reggeton {
+.contentLists .Reggeton {
   background-image: url("../img/badBunny.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 600px;
   transition: background-position, 2s;
 }
-
-.Reggeton:hover {
-  background-position: bottom;
-}
-
-.Rock {
+.contentLists .Rock {
   background-image: url("../img/rock.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 600px;
   transition: background-position, 2s;
 }
-
-.Rock:hover {
-  background-position: bottom;
-}
-
-.Rap {
+.contentLists .Rap {
   background-image: url("../img/rap.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 600px;
   transition: background-position, 2s;
 }
-
-.Rap:hover {
-  background-position: bottom;
-}
-
-.Electronic {
+.contentLists .Electronic {
   background-image: url("../img/electronic.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 600px;
   transition: background-position, 2s;
 }
-
-.Electronic:hover {
-  background-position: bottom;
-}
-
-.Pop {
+.contentLists .Pop {
   background-image: url("../img/pop.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 600px;
   transition: background-position, 2s;
 }
-
-.Pop:hover {
-  background-position: bottom;
-}
-
-.Flamenco {
+.contentLists .Flamenco {
   background-image: url("../img/flamenco.jpg");
   background-repeat: no-repeat;
   background-position: center;
@@ -143,8 +126,79 @@ body {
   transition: background-position, 2s;
 }
 
-.Flamenco:hover {
-  background-position: bottom;
+.dropdown {
+  display: inline-block;
+  position: relative;
+  width: 100px;
+}
+.dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  width: 100%;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+.dropdown .dropdown-content .form-dropdown {
+  display: inline-block;
+  position: relative;
+  width: 100px;
+}
+.dropdown .dropdown-content button {
+  color: black;
+  width: 100%;
+  text-decoration: none;
+  display: block;
+  background-color: white;
+}
+.dropdown .dropdown-content button:hover {
+  background-color: #00A4BD;
+  color: white;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  overflow: visible;
+}
+
+.contentSong {
+  background-color: #d0cfcf;
+  padding: 20px;
+  margin: 0 100px;
+  margin-bottom: 2em;
+}
+.contentSong .song {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 1.5em;
+  column-gap: 0;
+  border-radius: 12px;
+}
+.contentSong .song .songInfo {
+  background-color: #000000;
+  height: 150px;
+  width: 350px;
+}
+.contentSong .song .songInfo a {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2em;
+  color: #ffffff;
+  font-weight: bold;
+}
+.contentSong .song .songInfo a .titleSong {
+  margin-left: 15px;
+}
+.contentSong .song .songInfo a .descriptionSong {
+  margin-left: 15px;
+}
+.contentSong .song .drop {
+  display: flex;
+  align-items: end;
+  text-align: center;
+  padding: 10px;
+  background-color: red;
+  width: 50px;
 }
 
 @media (max-width: 768px) {
@@ -163,6 +217,14 @@ body {
     justify-content: center;
     align-items: center;
   }
+  .contentSong {
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    row-gap: 1.5em;
+  }
   .btnUser {
     background-color: #ffffff;
     width: 75px;
@@ -170,6 +232,15 @@ body {
     border-radius: 12px;
   }
   .btnUser i {
+    font-size: 2em;
+  }
+  .btnBack {
+    background-color: #ffffff;
+    width: 75px;
+    height: 75px;
+    border-radius: 12px;
+  }
+  .btnBack i {
     font-size: 2em;
   }
 }
@@ -189,6 +260,14 @@ body {
     justify-content: center;
     align-items: center;
   }
+  .contentSong {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 1.5em;
+    justify-content: space-evenly;
+    row-gap: 1.5em;
+  }
   .btnUser {
     background-color: #ffffff;
     width: 75px;
@@ -196,6 +275,15 @@ body {
     border-radius: 12px;
   }
   .btnUser i {
+    font-size: 2em;
+  }
+  .btnBack {
+    background-color: #ffffff;
+    width: 75px;
+    height: 75px;
+    border-radius: 12px;
+  }
+  .btnBack i {
     font-size: 2em;
   }
 }
@@ -217,6 +305,14 @@ body {
     justify-content: center;
     align-items: center;
   }
+  .contentSong {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 1.5em;
+    justify-content: space-evenly;
+    row-gap: 1.5em;
+  }
   .btnUser {
     background-color: #ffffff;
     width: 50px;
@@ -224,6 +320,15 @@ body {
     border-radius: 12px;
   }
   .btnUser i {
+    font-size: 1.2em;
+  }
+  .btnBack {
+    background-color: #ffffff;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+  }
+  .btnBack i {
     font-size: 1.2em;
   }
 }

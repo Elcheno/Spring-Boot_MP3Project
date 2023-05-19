@@ -8,11 +8,9 @@ $lightgrey: #d0cfcf;
 
 
 // Sizes
-$xs: 300px;
-$md: 768px;
-$lg: 900px;
 $v0: 0px;
 $v5: 5px;
+$v10: 10px;
 $v15: 15px;
 $v20: 20px;
 $v175: 175px;
@@ -43,7 +41,13 @@ body{
 
     .navbar{
       @include flex-center;
+      justify-content: space-evenly;
       margin-right: $v20;
+      column-gap: 1.5em;
+
+      button{
+        cursor: pointer;
+      }
 
     }
 
@@ -102,61 +106,154 @@ body{
       color: $black;
     }
   }
+
+  .listLists div:hover{
+    background-position: bottom;
+  }
 }
 
-.Reggeton{
-  @include bg-img("../img/badBunny.jpg", $v600);
-  transition: background-position, 2s;
+
+.contentLists{
+  .Reggeton{
+    @include bg-img("../img/badBunny.jpg", $v600);
+    transition: background-position, 2s;
+  }
+
+  //.Reggeton:hover{
+  //  background-position: bottom;
+  //}
+
+  .Rock{
+    @include bg-img("../img/rock.jpg", $v600);
+    transition: background-position, 2s;
+  }
+
+  //.Rock:hover{
+  //  background-position: bottom;
+  //}
+
+  .Rap{
+    @include bg-img("../img/rap.jpg", $v600);
+    transition: background-position, 2s;
+  }
+
+  //.Rap:hover{
+  //  background-position: bottom;
+  //}
+
+  .Electronic{
+    @include bg-img("../img/electronic.jpg", $v600);
+    transition: background-position, 2s;
+  }
+
+  //.Electronic:hover{
+  //  background-position: bottom;
+  //}
+
+  .Pop{
+    @include bg-img("../img/pop.png", $v600);
+    transition: background-position, 2s;
+  }
+
+  //.Pop:hover{
+  //  background-position: bottom;
+  //}
+
+  .Flamenco{
+    @include bg-img("../img/flamenco.jpg", $v600);
+    transition: background-position, 2s;
+  }
+
+  //.Flamenco:hover{
+  //  background-position: bottom;
+  //}
 }
 
-.Reggeton:hover{
-  background-position: bottom;
+
+.dropdown{
+  display: inline-block;
+  position: relative;
+  width: 100px;
+
+  .dropdown-content{
+    display: none;
+    position: absolute;
+    width: 100%;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+    .form-dropdown{
+      display: inline-block;
+      position: relative;
+      width: 100px;
+    }
+
+    button{
+      color: black;
+      width: 100%;
+      text-decoration: none;
+      display: block;
+      background-color: white;
+    }
+
+    button:hover{
+      background-color: #00A4BD;
+      color: white;
+    }
+  }
+}
+.dropdown:hover .dropdown-content{
+  display: block;
+  overflow: visible;
 }
 
-.Rock{
-  @include bg-img("../img/rock.jpg", $v600);
-  transition: background-position, 2s;
+.contentSong{
+  background-color: $lightgrey;
+  padding: $v20;
+  margin: 0 100px;
+  margin-bottom: 2em;
+
+  .song{
+    @include flex-row;
+    column-gap: 0;
+    border-radius: 12px;
+
+
+    .songInfo{
+      background-color: $black;
+      height: 150px;
+      width: 350px;
+      a{
+        @include flex-column;
+        row-gap: 2em;
+        color: $white;
+        font-weight: bold;
+
+        .titleSong{
+          margin-left: $v15;
+        }
+        .descriptionSong{
+          margin-left: $v15;
+        }
+      }
+
+    }
+
+    .drop{
+      display: flex;
+      align-items: end;
+      text-align: center;
+      padding: $v10;
+      background-color: red;
+      width: 50px;
+    }
+  }
+
 }
 
-.Rock:hover{
-  background-position: bottom;
-}
 
-.Rap{
-  @include bg-img("../img/rap.jpg", $v600);
-  transition: background-position, 2s;
-}
 
-.Rap:hover{
-  background-position: bottom;
-}
 
-.Electronic{
-  @include bg-img("../img/electronic.jpg", $v600);
-  transition: background-position, 2s;
-}
-
-.Electronic:hover{
-  background-position: bottom;
-}
-
-.Pop{
-  @include bg-img("../img/pop.png", $v600);
-  transition: background-position, 2s;
-}
-
-.Pop:hover{
-  background-position: bottom;
-}
-
-.Flamenco{
-  @include bg-img("../img/flamenco.jpg", $v600);
-  transition: background-position, 2s;
-}
-
-.Flamenco:hover{
-  background-position: bottom;
-}
 
 @media (max-width: 768px){
   .logo{
@@ -170,7 +267,22 @@ body{
 
   }
 
+  .contentSong{
+    @include flex-column;
+    @include flex-center;
+    row-gap: 1.5em;
+  }
+
   .btnUser{
+    background-color: $white;
+    @include sizes(75px, 75px);
+    border-radius: 12px;
+    i{
+      font-size: 2em;
+    }
+  }
+
+  .btnBack{
     background-color: $white;
     @include sizes(75px, 75px);
     border-radius: 12px;
@@ -190,7 +302,23 @@ body{
     @include flex-center;
 
   }
+
+  .contentSong{
+    @include flex-row;
+    justify-content: space-evenly;
+    row-gap: 1.5em;
+  }
+
   .btnUser{
+    background-color: $white;
+    @include sizes(75px, 75px);
+    border-radius: 12px;
+    i{
+      font-size: 2em;
+    }
+  }
+
+  .btnBack{
     background-color: $white;
     @include sizes(75px, 75px);
     border-radius: 12px;
@@ -210,7 +338,23 @@ body{
     @include flex-center;
 
   }
+
+  .contentSong{
+    @include flex-row;
+    justify-content: space-evenly;
+    row-gap: 1.5em;
+  }
+
   .btnUser{
+    background-color: $white;
+    @include sizes(50px, 50px);
+    border-radius: 12px;
+    i{
+      font-size: 1.2em;
+    }
+  }
+
+  .btnBack{
     background-color: $white;
     @include sizes(50px, 50px);
     border-radius: 12px;

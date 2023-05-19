@@ -4,35 +4,58 @@
     <meta charset="UTF-8">
     <title>songs</title>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/style-song.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <div>
-        <div>
-            <div><button onclick="history.go(-1);"><i class="fas fa-angle-left"></i></button></div>
-            <div><h1><span th:text="${title}"></span></h1></div>
-        </div>
-        <div><a th:href="@{/user}"><button><i class="fas fa-user"></i></button></a></div>
-    </div>
 
-    <div style="display: flex; flex-direction: row; justify-content: space-around;background-color: grey;gap: 20px">
-        <div th:each="song,iter: ${songs}" style="width: 100%;display: flex;justify-content: center;height: 60px">
-            <div>
-                <a style="width: 100%;height: 100%;display: flex;text-decoration: none" th:href="@{/listSong/songs/rpsong/{idList}/{idSong}(idList=${idList}, idSong=${song.id})}">
-                    <button type="submit" style="width: 100%;height: 100%"> <span th:text="${song.title}"/> </button>
-                </a>
+    <div class="wrapper">
+
+        <div class="header">
+            <div class="logo"></div>
+
+            <div class="navbar">
+                <div><a th:href="@{/user}"><button class="btnUser"><i class="fas fa-user"></i></button></a></div>
+                <div><button onclick="history.go(-1);" class="btnBack"><i class="fas fa-angle-left"></i></button></div>
+
             </div>
-            <div>
-                <div class="dropdown">
-                    <button><i class="fas fa-plus"></i></button>
-                    <div class="dropdown-content">
-                        <form th:each="listaSong,iter: ${lists}" th:action="@{/listSong/songs/{idList}/{idNewList}/{idSong}(idList=${idList}, idNewList=${listaSong.id}, idSong=${song.id})}" method="post" class="form-dropdown">
-                            <button type="submit"><span th:text="${listaSong.name}"></span></button>
-                        </form>
+
+        </div>
+
+        <div class="path">
+            <div><p><span th:text="${description}"></span></p></div>
+        </div>
+
+        <div class="contentSong">
+            <div th:each="song,iter: ${songs}" class="song">
+
+                <div class="songInfo">
+                    <a style="width: 100%;height: 100%;display: flex;text-decoration: none" th:href="@{/listSong/songs/rpsong/{idList}/{idSong}(idList=${idList}, idSong=${song.id})}">
+                        <div class="titleSong">
+                            <p><span th:text="${song.title}"/></p>
+                        </div>
+
+                        <div class="descriptionSong">
+                            <p><span th:text="${song.description}"/></p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="drop">
+                    <div class="dropdown">
+                        <button><i class="fas fa-plus"></i></button>
+                        <div class="dropdown-content">
+                            <form th:each="listaSong,iter: ${lists}" th:action="@{/listSong/songs/{idList}/{idNewList}/{idSong}(idList=${idList}, idNewList=${listaSong.id}, idSong=${song.id})}" method="post" class="form-dropdown">
+                                <button type="submit"><span th:text="${listaSong.name}"></span></button>
+                            </form>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
+
     </div>
+
 </body>
 </html>

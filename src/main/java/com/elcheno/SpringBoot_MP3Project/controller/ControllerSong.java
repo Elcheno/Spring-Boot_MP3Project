@@ -47,7 +47,7 @@ public class ControllerSong {
         List<Song> songs = songService.getSongsByListId(Integer.parseInt(idList));
         ListaSong listId = listService.getListaSongById(Integer.parseInt(idList));
         List<ListaSong> lists = listService.getListaSongByCategory(1);
-        model.addAttribute("title", listId.getName());
+        model.addAttribute("description", listId.getDescription());
         model.addAttribute("songs", songs);
         model.addAttribute("idList", idList);
         model.addAttribute("lists", lists);
