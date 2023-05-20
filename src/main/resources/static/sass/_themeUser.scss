@@ -1,0 +1,142 @@
+.addListUser{
+  @include flex-row;
+  background-color: $lightgrey;
+  border-radius: $v12;
+  padding: $v15;
+  margin: 0 100px;
+
+  .btnAddListUser{
+    background-color: transparent;
+    border: none;
+    font-size: 1.5em;
+    transition: transform, 1s;
+  }
+
+  .btnAddListUser:hover{
+    transform: rotate(90deg);
+  }
+
+  .formAddListUser{
+    align-items: center;
+    column-gap: 1em;
+
+    button{
+      background-color: transparent;
+      border: none;
+      font-size: 1.5em;
+      transition: transform, 1s;
+    }
+
+    button:hover{
+      transform: scale(1.3);
+    }
+  }
+
+}
+
+.listUser{
+  @include flex-row;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 1.5em;
+  row-gap: 1.5em;
+  margin: 2em 100px;
+  background-color: $lightgrey;
+  border-radius: $v12;
+  padding: $v20;
+
+  .listUserSong{
+    @include flex-row;
+    column-gap: 0;
+
+    .listsSongs{
+      background-color: $white;
+      border-radius: 12px;
+      @include flex-row;
+      column-gap: 0;
+
+      .songInfo{
+        @include flex-column;
+        @include sizes(150px, 350px);
+        row-gap: 2em;
+
+        div{
+          margin-left: $v15;
+          font-weight: bold;
+          font-size: 1.2em;
+        }
+      }
+
+      .nav{
+        @include flex-column;
+        text-align: center;
+        justify-content: end;
+        row-gap: 0.3em;
+        padding: $v10;
+        background-color: $lightblue;
+        width: 50px;
+
+        button{
+          background-color: transparent;
+          border: none;
+          font-size: 1.2em;
+        }
+        button:hover{
+          cursor: pointer;
+        }
+      }
+
+    }
+
+    .listsSongsForm{
+      background-color: $white;
+      border-radius: 12px;
+      display: none;
+      flex-direction: row;
+      column-gap: 0;
+
+      .formListSongs{
+        @include flex-row;
+        column-gap: 0;
+
+        .inputList{
+          @include flex-column;
+          @include sizes(150px, 350px);
+          row-gap: 2em;
+
+          input{
+            margin-left: $v15;
+            height: 1.2em;
+            width: 90%;
+          }
+
+          input:first-child{
+            margin-top: 2em;
+          }
+
+        }
+
+        .nav{
+          @include flex-column;
+          text-align: center;
+          justify-content: end;
+          row-gap: 0.3em;
+          padding: $v10;
+          background-color: $lightblue;
+          width: 50px;
+
+          button{
+            background-color: transparent;
+            border: none;
+            font-size: 1.2em;
+          }
+          button:hover{
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+  }
+
+}

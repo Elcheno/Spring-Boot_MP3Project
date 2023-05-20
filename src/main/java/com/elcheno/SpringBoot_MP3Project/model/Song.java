@@ -33,11 +33,16 @@ public class Song implements Serializable {
     @JdbcTypeCode(SqlTypes.VARCHAR)
     private String url;
 
-    public Song(String title, String artist, String description, String url) {
+    @Column(name = "img")
+    @JdbcTypeCode(SqlTypes.VARCHAR)
+    private String img;
+
+    public Song(String title, String artist, String description, String url, String img) {
         this.title = title;
         this.artist = artist;
         this.description = description;
         this.url = url;
+        this.img = img;
     }
     public Song() {
     }

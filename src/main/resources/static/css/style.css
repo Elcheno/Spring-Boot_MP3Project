@@ -1,7 +1,7 @@
 body {
   padding: 0px;
   margin: 0px;
-  font-family: "Bodoni MT", serif;
+  font-family: "Century Gothic";
 }
 
 .wrapper {
@@ -126,87 +126,9 @@ body {
   transition: background-position, 2s;
 }
 
-.dropdown {
-  display: inline-block;
-  position: relative;
-  width: 100px;
-}
-.dropdown .btnAddList {
-  border: none;
-  background-color: transparent;
-  transition: transform, 1s;
-}
-.dropdown .btnAddList:hover {
-  transform: rotate(90deg);
-}
-.dropdown .dropdown-content {
-  display: none;
-  position: absolute;
-  width: 100%;
-  overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-}
-.dropdown .dropdown-content .form-dropdown {
-  display: inline-block;
-  position: relative;
-  width: 100px;
-}
-.dropdown .dropdown-content button {
-  color: black;
-  width: 100%;
-  text-decoration: none;
-  display: block;
-  background-color: white;
-}
-.dropdown .dropdown-content button:hover {
-  background-color: #00A4BD;
-  color: white;
-}
-
 .dropdown:hover .dropdown-content {
   display: block;
   overflow: visible;
-}
-
-.contentSong {
-  background-color: #d0cfcf;
-  padding: 20px;
-  margin: 0 100px;
-  margin-bottom: 2em;
-}
-.contentSong .song {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  column-gap: 1.5em;
-  column-gap: 0;
-  border-radius: 12px;
-}
-.contentSong .song .songInfo {
-  background-color: #000000;
-  height: 150px;
-  width: 350px;
-}
-.contentSong .song .songInfo a {
-  display: flex;
-  flex-direction: column;
-  row-gap: 2em;
-  color: #ffffff;
-  font-weight: bold;
-}
-.contentSong .song .songInfo a .titleSong {
-  margin-left: 15px;
-}
-.contentSong .song .songInfo a .descriptionSong {
-  margin-left: 15px;
-}
-.contentSong .song .drop {
-  display: flex;
-  align-items: end;
-  text-align: center;
-  padding: 10px;
-  background-color: red;
-  width: 50px;
 }
 
 @media (max-width: 768px) {
@@ -251,6 +173,20 @@ body {
   .btnBack i {
     font-size: 2em;
   }
+  .formAddListUser {
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    row-gap: 2em;
+    width: 40em;
+  }
+  .formAddListUser input {
+    width: 75%;
+    height: 4em;
+    border-radius: 12px;
+  }
 }
 @media (min-width: 768px) and (max-width: 1024px) {
   .logo {
@@ -293,6 +229,20 @@ body {
   }
   .btnBack i {
     font-size: 2em;
+  }
+  .formAddListUser {
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    row-gap: 2em;
+    width: 40em;
+  }
+  .formAddListUser input {
+    width: 75%;
+    height: 4em;
+    border-radius: 12px;
   }
 }
 @media (min-width: 1024px) {
@@ -339,6 +289,234 @@ body {
   .btnBack i {
     font-size: 1.2em;
   }
+  .formAddListUser {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 1.5em;
+  }
+}
+.contentSong {
+  background-color: #d0cfcf;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 0 100px;
+  margin-bottom: 2em;
+}
+.contentSong .song {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 1.5em;
+  column-gap: 0;
+  border-radius: 12px;
+  background-color: #ffffff;
+}
+.contentSong .song .songInfo {
+  height: 150px;
+  width: 350px;
+}
+.contentSong .song .songInfo a {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  row-gap: 2em;
+  color: #000000;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.contentSong .song .songInfo a div {
+  margin-left: 15px;
+}
+.contentSong .song .nav {
+  display: flex;
+  align-items: end;
+  text-align: center;
+  padding: 10px;
+  background-color: #12d5b0;
+  width: 50px;
+}
+.contentSong .song .nav .btnRemoveSong {
+  border: none;
+  background-color: transparent;
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+  width: 100px;
+}
+.dropdown .btnAddList {
+  border: none;
+  background-color: transparent;
+  transition: transform, 1s;
+}
+.dropdown .btnAddList:hover {
+  transform: rotate(90deg);
+}
+.dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  width: 100%;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+.dropdown .dropdown-content .form-dropdown {
+  display: inline-block;
+  position: relative;
+  width: 100px;
+}
+.dropdown .dropdown-content button {
+  color: black;
+  width: 100%;
+  text-decoration: none;
+  display: block;
+  background-color: white;
+}
+.dropdown .dropdown-content button:hover {
+  background-color: #00A4BD;
+  color: white;
+}
+
+.addListUser {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 1.5em;
+  background-color: #d0cfcf;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 0 100px;
+}
+.addListUser .btnAddListUser {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5em;
+  transition: transform, 1s;
+}
+.addListUser .btnAddListUser:hover {
+  transform: rotate(90deg);
+}
+.addListUser .formAddListUser {
+  align-items: center;
+  column-gap: 1em;
+}
+.addListUser .formAddListUser button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5em;
+  transition: transform, 1s;
+}
+.addListUser .formAddListUser button:hover {
+  transform: scale(1.3);
+}
+
+.listUser {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 1.5em;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 1.5em;
+  row-gap: 1.5em;
+  margin: 2em 100px;
+  background-color: #d0cfcf;
+  border-radius: 12px;
+  padding: 20px;
+}
+.listUser .listUserSong {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 1.5em;
+  column-gap: 0;
+}
+.listUser .listUserSong .listsSongs {
+  background-color: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 1.5em;
+  column-gap: 0;
+}
+.listUser .listUserSong .listsSongs .songInfo {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 150px;
+  row-gap: 2em;
+}
+.listUser .listUserSong .listsSongs .songInfo div {
+  margin-left: 15px;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.listUser .listUserSong .listsSongs .nav {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: end;
+  row-gap: 0.3em;
+  padding: 10px;
+  background-color: #12d5b0;
+  width: 50px;
+}
+.listUser .listUserSong .listsSongs .nav button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.2em;
+}
+.listUser .listUserSong .listsSongs .nav button:hover {
+  cursor: pointer;
+}
+.listUser .listUserSong .listsSongsForm {
+  background-color: #ffffff;
+  border-radius: 12px;
+  display: none;
+  flex-direction: row;
+  column-gap: 0;
+}
+.listUser .listUserSong .listsSongsForm .formListSongs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 1.5em;
+  column-gap: 0;
+}
+.listUser .listUserSong .listsSongsForm .formListSongs .inputList {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 150px;
+  row-gap: 2em;
+}
+.listUser .listUserSong .listsSongsForm .formListSongs .inputList input {
+  margin-left: 15px;
+  height: 1.2em;
+  width: 90%;
+}
+.listUser .listUserSong .listsSongsForm .formListSongs .inputList input:first-child {
+  margin-top: 2em;
+}
+.listUser .listUserSong .listsSongsForm .formListSongs .nav {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: end;
+  row-gap: 0.3em;
+  padding: 10px;
+  background-color: #12d5b0;
+  width: 50px;
+}
+.listUser .listUserSong .listsSongsForm .formListSongs .nav button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.2em;
+}
+.listUser .listUserSong .listsSongsForm .formListSongs .nav button:hover {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */
