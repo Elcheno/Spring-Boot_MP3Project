@@ -1,0 +1,14 @@
+{
+  "name": "spring-boot_mp3project",
+  "version": "1.0.0",
+  "description": "Proyecto para 3º Trimestre del Grado Superior 1º DAM<br>\r Realizado con Spring-Boot y Maven<br>\r Consiste en una Web estilo Spotify<br>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}

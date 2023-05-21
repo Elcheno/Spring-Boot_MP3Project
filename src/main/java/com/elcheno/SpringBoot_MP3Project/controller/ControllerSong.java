@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -44,13 +46,19 @@ public class ControllerSong {
 
     @GetMapping("/listSong/songs/{idList}")//METODO DE LA VISTA 'song' DEL 'system' DE UNA LISTA (LISTA DE CANCIONES)
     public String songSystem(Model model, @PathVariable("idList") String idList){
+        List<ListaSong> lista = new ArrayList<>();
         List<Song> songs = songService.getSongsByListId(Integer.parseInt(idList));
         ListaSong listId = listService.getListaSongById(Integer.parseInt(idList));
         List<ListaSong> lists = listService.getListaSongByCategory(1);
+        for(ListaSong aux : lists){
+            if(aux.getName()!=null){
+                lista.add(aux);
+            }
+        }
         model.addAttribute("description", listId.getDescription());
         model.addAttribute("songs", songs);
         model.addAttribute("idList", idList);
-        model.addAttribute("lists", lists);
+        model.addAttribute("lists", lista);
         return "songsSystem";
     }
 
@@ -93,8 +101,14 @@ public class ControllerSong {
 
     @GetMapping("/user")//METODO DE LA VISTA 'user' (LISTA DE LISTAS DE USUARIO)
     public String user(Model model){
+        List<ListaSong> lista = new ArrayList<>();
         List<ListaSong> lists = listService.getListaSongByCategory(1);
-        model.addAttribute("lists", lists);
+        for(ListaSong aux : lists){
+            if(aux.getName()!=null){
+                lista.add(aux);
+            }
+        }
+        model.addAttribute("lists", lista);
         model.addAttribute("newList", new ListaSong());
         return "user";
     }

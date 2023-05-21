@@ -34,7 +34,7 @@
     .nav{
       display: flex;
       align-items: end;
-      text-align: center;
+      justify-content: center;
       padding: $v10;
       background-color: $lightblue;
       width: 50px;
@@ -42,6 +42,9 @@
       .btnRemoveSong{
         border: none;
         background-color: transparent;
+      }
+      .btnRemoveSong:hover{
+        cursor: pointer;
       }
 
     }
