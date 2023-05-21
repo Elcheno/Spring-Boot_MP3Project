@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -29,7 +31,7 @@ public class ControllerSong {
 
     @GetMapping("/home")//METODO DE LA VISTA 'home' (INICIO)
     public String home(Model model){
-        getData();
+//        getData();
         List<ListaSong> lists = listService.getListaSongByCategory(2);
         model.addAttribute("lists", lists);
         return "home";
@@ -44,13 +46,19 @@ public class ControllerSong {
 
     @GetMapping("/listSong/songs/{idList}")//METODO DE LA VISTA 'song' DEL 'system' DE UNA LISTA (LISTA DE CANCIONES)
     public String songSystem(Model model, @PathVariable("idList") String idList){
+        List<ListaSong> lista = new ArrayList<>();
         List<Song> songs = songService.getSongsByListId(Integer.parseInt(idList));
         ListaSong listId = listService.getListaSongById(Integer.parseInt(idList));
         List<ListaSong> lists = listService.getListaSongByCategory(1);
-        model.addAttribute("title", listId.getName());
+        for(ListaSong aux : lists){
+            if(aux.getName()!=null){
+                lista.add(aux);
+            }
+        }
+        model.addAttribute("description", listId.getDescription());
         model.addAttribute("songs", songs);
         model.addAttribute("idList", idList);
-        model.addAttribute("lists", lists);
+        model.addAttribute("lists", lista);
         return "songsSystem";
     }
 
@@ -93,8 +101,14 @@ public class ControllerSong {
 
     @GetMapping("/user")//METODO DE LA VISTA 'user' (LISTA DE LISTAS DE USUARIO)
     public String user(Model model){
+        List<ListaSong> lista = new ArrayList<>();
         List<ListaSong> lists = listService.getListaSongByCategory(1);
-        model.addAttribute("lists", lists);
+        for(ListaSong aux : lists){
+            if(aux.getName()!=null){
+                lista.add(aux);
+            }
+        }
+        model.addAttribute("lists", lista);
         model.addAttribute("newList", new ListaSong());
         return "user";
     }
@@ -120,46 +134,46 @@ public class ControllerSong {
     }
 
     //METODO PARA AGREGAR DATOS A FUEGO UNA UNICA VEZ
-    public void getData(){
-        if(!flagData){
-            CategoryList category1 = new CategoryList("user");//id = 1
-            ListaSong lista4 = new ListaSong("Lista4", "description", category1);
-            category1.addListaSong(lista4);
-
-            CategoryList category2 = new CategoryList("system");//id = 2
-            ListaSong lista1 = new ListaSong("Lista1", "description", category2);
-            ListaSong lista2 = new ListaSong("Lista2", "description", category2);
-            ListaSong lista3 = new ListaSong("Lista3", "description", category2);
-            Song song1 = new Song("Triste Verano", "description", "Eladio Carrión", "SQymtMNE9BU");
-            Song song2 = new Song("Coco Chanel", "description", "Eladio Carrión", "j1VVY2sEdC0");
-            Song song3 = new Song("Si La Calle Llama Remix", "description", "Eladio Carrión", "_REASiFeT_g");
-            Song song4 = new Song("Hola Cómo Vas", "description", "Eladio Carrión", "PKoBuyUfQSo");
-            lista1.addSong(song1);
-            lista1.addSong(song2);
-            lista2.addSong(song3);
-            lista2.addSong(song4);
-            category2.addListaSong(lista1);
-            category2.addListaSong(lista2);
-            category2.addListaSong(lista3);
-            songService.save(song1);
-            songService.save(song2);
-            songService.save(song3);
-            songService.save(song4);
-            categoryService.save(category1);
-            categoryService.save(category2);
-            listService.save(lista1);
-            listService.save(lista2);
-            listService.save(lista3);
-            listService.save(lista4);
-
-
-            flagData = true;
+//    public void getData(){
+//        if(!flagData){
+//            CategoryList category1 = new CategoryList("user");//id = 1
+//            ListaSong lista4 = new ListaSong("Lista4", "description", category1);
+//            category1.addListaSong(lista4);
+//
+//            CategoryList category2 = new CategoryList("system");//id = 2
+//            ListaSong lista1 = new ListaSong("Lista1", "description", category2);
+//            ListaSong lista2 = new ListaSong("Lista2", "description", category2);
+//            ListaSong lista3 = new ListaSong("Lista3", "description", category2);
+//            Song song1 = new Song("Triste Verano", "description", "Eladio Carrión", "SQymtMNE9BU");
+//            Song song2 = new Song("Coco Chanel", "description", "Eladio Carrión", "j1VVY2sEdC0");
+//            Song song3 = new Song("Si La Calle Llama Remix", "description", "Eladio Carrión", "_REASiFeT_g");
+//            Song song4 = new Song("Hola Cómo Vas", "description", "Eladio Carrión", "PKoBuyUfQSo");
+//            lista1.addSong(song1);
+//            lista1.addSong(song2);
+//            lista2.addSong(song3);
+//            lista2.addSong(song4);
+//            category2.addListaSong(lista1);
+//            category2.addListaSong(lista2);
+//            category2.addListaSong(lista3);
+//            songService.save(song1);
+//            songService.save(song2);
+//            songService.save(song3);
+//            songService.save(song4);
+//            categoryService.save(category1);
+//            categoryService.save(category2);
+//            listService.save(lista1);
+//            listService.save(lista2);
+//            listService.save(lista3);
+//            listService.save(lista4);
+//
+//
+//            flagData = true;
             /*
             * CONSULTAS SQL PARA AGREGAR LAS RELACIONES DE LAS TABLAS:
             * INSERT INTO listas_songs (lista_song_id, songs_id) VALUES (1, 1), (1, 2), (2, 3), (2, 4);
             * INSERT INTO categories_lista_songs (category_list_id, lista_songs_id) VALUES (1, 4), (2, 1), (2, 2), (2, 3);
             */
-        }
-    }
+//        }
+//    }
 
 }
