@@ -2,11 +2,11 @@
 body{
   @include pm-0;
   font-family: "Century Gothic", serif;
+  background-color: $floor;
 }
 
 
 .wrapper{
-  background-color: $white;
 
   .header{
     @include flex-row;
@@ -21,6 +21,7 @@ body{
 
       button{
         cursor: pointer;
+        background-color: $lightblue;
       }
 
     }
@@ -36,7 +37,7 @@ body{
   p{
     font-size: 40px;
     font-weight: bold;
-
+    color: $white;
   }
 }
 
@@ -131,7 +132,7 @@ body{
 @media (max-width: 768px){
   .logo{
     @include sizes(175px, 275px);
-    @include bg-img("../img/MP3Project-Logo.png", $v250);
+    @include bg-img("../img/logo.png", $v250);
 
   }
   .contentLists{
@@ -182,7 +183,7 @@ body{
 @media (min-width: 768px) and (max-width: 1024px){
   .logo{
     @include sizes(175px, 275px);
-    @include bg-img("../img/MP3Project-Logo.png", $v250);
+    @include bg-img("../img/logo.png", $v250);
   }
   .contentLists{
     @include flex-column;
@@ -232,7 +233,7 @@ body{
 @media (min-width: 1024px){
   .logo{
     @include sizes(100px, 275px);
-    @include bg-img("../img/MP3Project-Logo.png", 200px);
+    @include bg-img("../img/logo.png", 200px);
   }
   .contentLists{
     @include flex-row;

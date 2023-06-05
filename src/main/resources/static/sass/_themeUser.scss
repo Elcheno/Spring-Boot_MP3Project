@@ -5,11 +5,16 @@
   padding: $v15;
   margin: 0 100px;
 
+  form{
+    display: none;
+  }
+
   .btnAddListUser{
     background-color: transparent;
     border: none;
     font-size: 1.5em;
     transition: transform, 1s;
+    color: $white;
   }
 
   .btnAddListUser:hover{
@@ -20,11 +25,27 @@
     align-items: center;
     column-gap: 1em;
 
+    input{
+      background: none;
+      border: none;
+      color: $white;
+    }
+
+    input:focus{
+      outline: none;
+      border-bottom: 1px solid $white;
+    }
+
+    input::placeholder{
+      color: $white;
+    }
+
     button{
       background-color: transparent;
       border: none;
       font-size: 1.5em;
       transition: transform, 1s;
+      color: $white;
     }
 
     button:hover{
@@ -55,10 +76,15 @@
       @include flex-row;
       column-gap: 0;
 
+      .list{
+        text-decoration: none;
+      }
+
       .songInfo{
         @include flex-column;
         @include sizes(150px, 350px);
         row-gap: 2em;
+        color: $black;
 
         div{
           margin-left: $v15;
@@ -108,10 +134,22 @@
             margin-left: $v15;
             height: 1.2em;
             width: 90%;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            border-bottom: 1px solid $black;
+          }
+
+          input::placeholder{
+            color: $black;
+          }
+
+          input:focus{
+            outline: none;
           }
 
           input:first-child{
-            margin-top: 2em;
+            margin-top: 1.4em;
           }
 
         }

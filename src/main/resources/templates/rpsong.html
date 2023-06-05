@@ -4,35 +4,63 @@
     <meta charset="UTF-8">
     <title>rpsong</title>
     <link rel="stylesheet" href="/style-rpsong.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5cc499f238.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<!-- ESTO SIRVE PARA POSTERIORMENTE CONSEGUIR LA URL DE LA CANCION Y REPRODUCIRLA -->
+<h1 th:text="${newSong.url}" id="urlSong" style="display: none"></h1>
 
-  <div>
-    <div>
-      <div><button onclick="history.go(-1);"><i class="fas fa-angle-left"></i></button></div>
-      <div><h1>Reproductor de canciones</h1>
+  <div class="wrapper">
+
+    <div class="header">
+      <div class="logo"></div>
+
+      <div class="navbar">
+        <div><a th:href="@{/user}"><button class="btnUser"><i class="fas fa-user"></i></button></a></div>
+        <div><a th:href="@{/home}"><button class="btnBack"><i class="fas fa-home"></i></button></a></div>
       </div>
+
     </div>
-    <div><a th:href="@{/user}"><button><i class="fas fa-user"></i></button></a></div>
+
+    <div class="container">
+      <div id="player"></div>
+
+      <div class="artistSong">
+        <span th:text="${newSong.artist}"></span>
+      </div>
+
+      <div class="titleSong">
+        <span th:text="${newSong.title}"></span>
+      </div>
+
+      <div class="controls">
+        <div class="playPause">
+          <button onclick="controlSong()"><i class="fas fa-pause" id="ctrlIconPlayPause"></i></button>
+        </div>
+
+        <div class="audioMute">
+          <button onclick="controlMutedSong()"><i class="fas fa-volume-up" id="ctrlIconMuted"></i></button>
+        </div>
+      </div>
+
+      <div class="rangeSong">
+        <input type="range" value="0" id="progress" max="0">
+      </div>
+
+    </div>
+
   </div>
 
-  <h1 th:text="${newSong.url}" id="urlSong" style="display: none"></h1>
-  <h2><span th:text="${newSong.title}"></span></h2>
-  <div id="player"></div>
-
-  <hr>
-  <input type="range" value="0" id="progress" max="0">
-  <button onclick="controlSong()"><i class="fas fa-pause" id="ctrlIconPlayPause"></i></button>
-  <button onclick="controlMutedSong()"><i class="fas fa-volume-up" id="ctrlIconMuted"></i></button>
-
-
+  <!-- CONSUMIMOS LA API DE YOUTUBE PARA LA REPRODUCCION DE LA MUSICA -->
   <script src="https://www.youtube.com/iframe_api"></script>
+  <!-- UTLIZAMOS LA API DE YOUTUBE PARA CREAR UN FRAME -->
   <script>
       let myVariable = document.getElementById("urlSong").textContent;
       let progress = document.getElementById("progress");
       let ctrlIconMuted = document.getElementById("ctrlIconMuted");
   </script>
+  <!-- CREAMOS LOS CONTROLES DE LA CANCION -->
   <script>
       // Este codigo carga el frame de la API de youtube
       let tag = document.createElement('script');
@@ -46,7 +74,6 @@
           player = new YT.Player('player', {
               height: '0',
               width: '0',
-              //videoId: 'M7lc1UVf-VE',
               videoId: myVariable,
               events: {
                   'onReady': onPlayerReady,
@@ -105,12 +132,6 @@
       }
 
   </script>
-  <script>
 
-
-
-
-
-  </script>
 </body>
 </html>
