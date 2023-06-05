@@ -2,19 +2,22 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>rpsong</title>
+    <title>SoundVibe</title>
+    <link rel="icon" type="image/png" href="/img/logo-head.png">
     <link rel="stylesheet" href="/style-rpsong.css">
     <script src="https://kit.fontawesome.com/5cc499f238.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
+<body class="floor-rp">
 <!-- ESTO SIRVE PARA POSTERIORMENTE CONSEGUIR LA URL DE LA CANCION Y REPRODUCIRLA -->
 <h1 th:text="${newSong.url}" id="urlSong" style="display: none"></h1>
 
   <div class="wrapper">
 
     <div class="header">
-      <div class="logo"></div>
+      <a th:href="@{/home}">
+        <div class="logo"></div>
+      </a>
 
       <div class="navbar">
         <div><a th:href="@{/user}"><button class="btnUser"><i class="fas fa-user"></i></button></a></div>
@@ -23,7 +26,7 @@
 
     </div>
 
-    <div class="container">
+    <div class="containerRp">
       <div id="player"></div>
 
       <div class="artistSong">
@@ -35,18 +38,26 @@
       </div>
 
       <div class="controls">
-        <div class="playPause">
-          <button onclick="controlSong()"><i class="fas fa-pause" id="ctrlIconPlayPause"></i></button>
+
+        <div class="btn-controls">
+          <div class="playPause">
+            <button onclick="controlSong()"><i class="fas fa-pause" id="ctrlIconPlayPause"></i></button>
+          </div>
+
+          <div class="audioMute">
+            <button onclick="controlMutedSong()"><i class="fas fa-volume-up" id="ctrlIconMuted"></i></button>
+          </div>
         </div>
 
-        <div class="audioMute">
-          <button onclick="controlMutedSong()"><i class="fas fa-volume-up" id="ctrlIconMuted"></i></button>
+        <div class="rangeSong">
+          <input type="range" value="0" id="progress" max="0">
         </div>
+
+
+
       </div>
 
-      <div class="rangeSong">
-        <input type="range" value="0" id="progress" max="0">
-      </div>
+
 
     </div>
 
@@ -54,13 +65,13 @@
 
   <!-- CONSUMIMOS LA API DE YOUTUBE PARA LA REPRODUCCION DE LA MUSICA -->
   <script src="https://www.youtube.com/iframe_api"></script>
-  <!-- UTLIZAMOS LA API DE YOUTUBE PARA CREAR UN FRAME -->
+  <!-- VARIABLES -->
   <script>
       let myVariable = document.getElementById("urlSong").textContent;
       let progress = document.getElementById("progress");
       let ctrlIconMuted = document.getElementById("ctrlIconMuted");
   </script>
-  <!-- CREAMOS LOS CONTROLES DE LA CANCION -->
+  <!-- UTLIZAMOS LA API DE YOUTUBE PARA CREAR UN FRAME Y CREAMOS LOS CONTROLES DE LA CANCION -->
   <script>
       // Este codigo carga el frame de la API de youtube
       let tag = document.createElement('script');

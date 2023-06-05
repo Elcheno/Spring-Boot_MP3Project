@@ -5,6 +5,10 @@ body {
   background-color: #205E61;
 }
 
+button {
+  cursor: pointer;
+}
+
 .wrapper .header {
   display: flex;
   flex-direction: row;
@@ -562,4 +566,162 @@ body {
 }
 .listUser .listUserSong .listsSongsForm .formListSongs .nav button:hover {
   cursor: pointer;
+}
+
+.floor-rp {
+  background-image: url("./../img/floor-rp.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 108%;
+}
+
+.containerRp {
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  background-color: #131b1b;
+  width: 50%;
+  height: 60vh;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 1rem;
+  border-radius: 25px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+}
+.containerRp .artistSong {
+  text-align: end;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.containerRp .titleSong {
+  margin: auto;
+  font-weight: bold;
+  font-size: 3rem;
+}
+.containerRp .controls {
+  display: flex;
+  flex-direction: column;
+}
+.containerRp .controls .btn-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.containerRp .controls .btn-controls .playPause {
+  width: 100%;
+  text-align: end;
+}
+.containerRp .controls .btn-controls .audioMute {
+  width: 90%;
+  text-align: end;
+}
+.containerRp .controls .btn-controls .audioMute button {
+  margin-right: 3rem;
+}
+.containerRp .controls .btn-controls button {
+  border: none;
+  background: none;
+  font-size: 2em;
+  color: #58e9e1;
+  transition: color 0.5s;
+}
+.containerRp .controls .btn-controls button:hover {
+  color: #109690;
+}
+.containerRp .controls .rangeSong {
+  width: 90%;
+  margin: 1rem auto;
+}
+.containerRp .controls .rangeSong input {
+  width: 100%;
+}
+.containerRp .controls .rangeSong input[type=range] {
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 100%;
+}
+.containerRp .controls .rangeSong input[type=range]:focus {
+  outline: none;
+}
+.containerRp .controls .rangeSong input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 5px #000000;
+  background: none;
+  border-radius: 6px;
+  border: 1px solid #205E61;
+}
+.containerRp .controls .rangeSong input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 13px;
+  border-radius: 8px;
+  background: #58E9E1;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -11px;
+}
+.containerRp .controls .rangeSong input[type=range]:focus::-webkit-slider-runnable-track {
+  background: none;
+}
+.containerRp .controls .rangeSong input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 5px #000000;
+  background: none;
+  border-radius: 6px;
+  border: 1px solid #205E61;
+}
+.containerRp .controls .rangeSong input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 13px;
+  border-radius: 8px;
+  background: #58E9E1;
+  cursor: pointer;
+}
+.containerRp .controls .rangeSong input[type=range]::-ms-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+.containerRp .controls .rangeSong input[type=range]::-ms-fill-lower {
+  background: none;
+  border: 1px solid #205E61;
+  border-radius: 12px;
+  box-shadow: 1px 1px 5px #000000;
+}
+.containerRp .controls .rangeSong input[type=range]::-ms-fill-upper {
+  background: none;
+  border: 1px solid #205E61;
+  border-radius: 12px;
+  box-shadow: 1px 1px 5px #000000;
+}
+.containerRp .controls .rangeSong input[type=range]::-ms-thumb {
+  margin-top: 1px;
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 13px;
+  border-radius: 8px;
+  background: #58E9E1;
+  cursor: pointer;
+}
+.containerRp .controls .rangeSong input[type=range]:focus::-ms-fill-lower {
+  background: none;
+}
+.containerRp .controls .rangeSong input[type=range]:focus::-ms-fill-upper {
+  background: none;
 }

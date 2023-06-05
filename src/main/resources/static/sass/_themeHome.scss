@@ -1,8 +1,13 @@
-// Theme
+// Theme Home page
+
 body{
   @include pm-0;
   font-family: "Century Gothic", serif;
   background-color: $floor;
+}
+
+button{
+  cursor: pointer;
 }
 
 

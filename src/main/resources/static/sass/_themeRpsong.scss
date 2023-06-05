@@ -1,0 +1,176 @@
+// Theme RpSong page
+
+.floor-rp{
+  background-image: url("./../img/floor-rp.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 108%;
+}
+
+.containerRp{
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  background-color: $lightgrey;
+  width: 50%;
+  height: 60vh;
+  color: $white;
+  padding: 1rem;
+  border-radius: 25px;
+  box-shadow: 10px 10px 20px $black;
+
+  @include flex-column;
+
+  .artistSong{
+    text-align: end;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .titleSong{
+    margin: auto;
+    font-weight: bold;
+    font-size: 3rem;
+
+  }
+
+  .controls{
+    display: flex;
+    flex-direction: column;
+
+    .btn-controls{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+
+      .playPause{
+        width: 100%;
+        text-align: end;
+
+      }
+
+      .audioMute{
+        width: 90%;
+        text-align: end;
+
+        button{
+          margin-right: 3rem;
+        }
+      }
+
+      button{
+        border: none;
+        background: none;
+        font-size: 2em;
+        color: $lightblue;
+        transition: color 0.5s;
+      }
+
+      button:hover{
+        color: #109690;
+      }
+
+    }
+
+    .rangeSong{
+      width: 90%;
+      margin: 1rem auto;
+
+      input{
+        width: 100%;
+      }
+
+      input[type=range] {
+        -webkit-appearance: none;
+        margin: 10px 0;
+        width: 100%;
+      }
+      input[type=range]:focus {
+        outline: none;
+      }
+      input[type=range]::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 10px;
+        cursor: pointer;
+        animate: 0.2s;
+        box-shadow: 1px 1px 5px #000000;
+        background: none;
+        border-radius: 6px;
+        border: 1px solid #205E61;
+      }
+      input[type=range]::-webkit-slider-thumb {
+        box-shadow: 1px 1px 1px #000000;
+        border: 1px solid #000000;
+        height: 30px;
+        width: 13px;
+        border-radius: 8px;
+        background: #58E9E1;
+        cursor: pointer;
+        -webkit-appearance: none;
+        margin-top: -11px;
+      }
+      input[type=range]:focus::-webkit-slider-runnable-track {
+        background: none;
+      }
+      input[type=range]::-moz-range-track {
+        width: 100%;
+        height: 10px;
+        cursor: pointer;
+        animate: 0.2s;
+        box-shadow: 1px 1px 5px #000000;
+        background: none;
+        border-radius: 6px;
+        border: 1px solid #205E61;
+      }
+      input[type=range]::-moz-range-thumb {
+        box-shadow: 1px 1px 1px #000000;
+        border: 1px solid #000000;
+        height: 30px;
+        width: 13px;
+        border-radius: 8px;
+        background: #58E9E1;
+        cursor: pointer;
+      }
+      input[type=range]::-ms-track {
+        width: 100%;
+        height: 10px;
+        cursor: pointer;
+        animate: 0.2s;
+        background: transparent;
+        border-color: transparent;
+        color: transparent;
+      }
+      input[type=range]::-ms-fill-lower {
+        background: none;
+        border: 1px solid #205E61;
+        border-radius: 12px;
+        box-shadow: 1px 1px 5px #000000;
+      }
+      input[type=range]::-ms-fill-upper {
+        background: none;
+        border: 1px solid #205E61;
+        border-radius: 12px;
+        box-shadow: 1px 1px 5px #000000;
+      }
+      input[type=range]::-ms-thumb {
+        margin-top: 1px;
+        box-shadow: 1px 1px 1px #000000;
+        border: 1px solid #000000;
+        height: 30px;
+        width: 13px;
+        border-radius: 8px;
+        background: #58E9E1;
+        cursor: pointer;
+      }
+      input[type=range]:focus::-ms-fill-lower {
+        background: none;
+      }
+      input[type=range]:focus::-ms-fill-upper {
+        background: none;
+      }
+    }
+
+  }
+
+}
