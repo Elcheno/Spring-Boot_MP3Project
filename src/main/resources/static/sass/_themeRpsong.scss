@@ -1,25 +1,13 @@
 // Theme RpSong page
 
-.floor-rp{
-  background-image: url("./../img/floor-rp.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 108%;
-}
-
 .containerRp{
-  position: absolute;
-  top: 20%;
-  left: 25%;
   background-color: $lightgrey;
-  width: 50%;
   height: 60vh;
   color: $white;
   padding: 1rem;
   border-radius: 25px;
   box-shadow: 10px 10px 20px $black;
-
+  position: absolute;
   @include flex-column;
 
   .artistSong{
@@ -32,6 +20,7 @@
     margin: auto;
     font-weight: bold;
     font-size: 3rem;
+    text-align: center;
 
   }
 
@@ -82,6 +71,7 @@
       }
 
       input[type=range] {
+
         -webkit-appearance: none;
         margin: 10px 0;
         width: 100%;
