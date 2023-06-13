@@ -37,12 +37,12 @@ public class ControllerSong {
         return "home";
     }
 
-    @GetMapping("/listSong")//METODO DE LA VISTA 'lists' (LISTA DE LISTAS)
-    public String listSong(Model model){
-        List<ListaSong> lists = listService.getAllListaSong();
-        model.addAttribute("listSong", lists);
-        return "lists";
-    }
+//    @GetMapping("/listSong")//METODO DE LA VISTA 'lists' (LISTA DE LISTAS)
+//    public String listSong(Model model){
+//        List<ListaSong> lists = listService.getAllListaSong();
+//        model.addAttribute("listSong", lists);
+//        return "lists";
+//    }
 
     @GetMapping("/listSong/songs/{idList}")//METODO DE LA VISTA 'song' DEL 'system' DE UNA LISTA (LISTA DE CANCIONES)
     public String songSystem(Model model, @PathVariable("idList") String idList){

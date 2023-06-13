@@ -1,8 +1,13 @@
-// Theme
+// Theme Home page
+
 body{
   @include pm-0;
   font-family: "Century Gothic", serif;
   background-color: $floor;
+}
+
+button:hover{
+  cursor: pointer;
 }
 
 
@@ -17,12 +22,6 @@ body{
       @include flex-center;
       justify-content: space-evenly;
       margin-right: $v20;
-      column-gap: 1.5em;
-
-      button{
-        cursor: pointer;
-        background-color: $lightblue;
-      }
 
     }
 
@@ -33,11 +32,13 @@ body{
 
 .path{
   @include flex-center;
-
-  p{
-    font-size: 40px;
-    font-weight: bold;
-    color: $white;
+  div{
+    text-align: center;
+    p{
+      font-size: 40px;
+      font-weight: bold;
+      color: $white;
+    }
   }
 }
 
@@ -45,32 +46,26 @@ body{
   padding: $v20;
   background-color: $lightgrey;
   row-gap: 3em;
-  margin: 0px 100px;
   margin-bottom: 2em;
   border-radius: $v12;
 
   .listLists{
-    @include sizes($v250, $v600);
     padding: $v5;
     background-color: $white;
     border-radius: 12px;
 
     .list{
       @include flex-column;
-      @include sizes($v250, $v600);
-      row-gap: 4em;
       color: $white;
       font-weight: bold;
 
       .nameList{
         @include flex-start;
-        font-size: 2em;
         margin-left: $v15;
 
       }
       .descriptionList{
         @include flex-end;
-        font-size: 1.8em;
         margin-right: $v15;
 
       }
@@ -87,41 +82,6 @@ body{
   }
 }
 
-
-.contentLists{
-  .Reggeton{
-    @include bg-img("../img/badBunny.jpg", $v600);
-    transition: background-position, 2s;
-  }
-
-  .Rock{
-    @include bg-img("../img/rock.jpg", $v600);
-    transition: background-position, 2s;
-  }
-
-  .Rap{
-    @include bg-img("../img/rap.jpg", $v600);
-    transition: background-position, 2s;
-  }
-
-  .Electronic{
-    @include bg-img("../img/electronic.jpg", $v600);
-    transition: background-position, 2s;
-  }
-
-  .Pop{
-    @include bg-img("../img/pop.png", $v600);
-    transition: background-position, 2s;
-  }
-
-  .Flamenco{
-    @include bg-img("../img/flamenco.jpg", $v600);
-    transition: background-position, 2s;
-  }
-}
-
-
-
 .dropdown:hover .dropdown-content{
   display: block;
   overflow: visible;
@@ -129,22 +89,86 @@ body{
 
 
 
-@media (max-width: 768px){
+@media (max-width: 767px){
   .logo{
-    @include sizes(175px, 275px);
-    @include bg-img("../img/logo.png", $v250);
+    @include sizes($v150, $v175);
+    @include bg-img($logo, $v150);
 
   }
+  .navbar{
+    column-gap: 0;
+
+    button{
+      background: none;
+      border: none;
+      display: flex;
+      justify-content: center;
+
+      i{
+        color: $lightblue;
+        font-size: 30px;
+        margin: auto;
+      }
+    }
+  }
+
   .contentLists{
     @include flex-column;
     @include flex-center;
+    margin: 0px;
 
+    .listLists{
+      @include sizes($v125, $v300);
+
+      .list{
+        @include sizes($v125, $v300);
+        row-gap: 1rem;
+
+        .nameList{
+          font-size: 1.3em;
+        }
+
+        .descriptionList{
+          font-size: 1.1em;
+        }
+      }
+    }
+    .Reggeton{
+      @include bg-img("../img/regueton.jpg", $v300);
+      transition: background-position, 2s;
+    }
+    .Rock{
+      @include bg-img("../img/rock.jpg", $v300);
+      transition: background-position, 2s;
+    }
+    .Rap{
+      @include bg-img("../img/rap.jpg", $v300);
+      transition: background-position, 2s;
+    }
+    .Electronic{
+      @include bg-img("../img/electronic.jpg", $v300);
+      transition: background-position, 2s;
+    }
+    .Pop{
+      @include bg-img("../img/pop.png", $v300);
+      transition: background-position, 2s;
+    }
+    .Flamenco{
+      @include bg-img("../img/flamenco.jpg", $v300);
+      transition: background-position, 2s;
+    }
   }
 
   .contentSong{
     @include flex-column;
     @include flex-center;
     row-gap: 1.5em;
+    margin: 0px;
+
+    .nav{
+      width: 100%;
+      height: 30px;
+    }
   }
 
   .btnUser{
@@ -165,16 +189,63 @@ body{
     }
   }
 
-  .formAddListUser{
-    @include flex-column;
-    @include flex-center;
-    row-gap: 2em;
-    width: 40em;
 
-    input{
-      width: 75%;
-      height: 4em;
-      border-radius: $v12;
+
+  .addListUser{
+    margin: 0px;
+
+    form{
+      width: 100%;
+    }
+
+    .formAddListUser {
+      @include flex-column;
+      @include flex-center;
+      row-gap: 2em;
+      //width: 40em;
+      width: 100%;
+
+      input {
+        width: 75%;
+        height: 4em;
+        border-radius: $v12;
+      }
+    }
+  }
+
+  .listUser{
+    margin: 2em 0px;
+
+    .nav{
+      width: 100%;
+      @include flex-row;
+
+    }
+  }
+
+  .listsSongsForm{
+
+    .nav{
+      @include flex-row;
+      width: 100%;
+    }
+  }
+
+  .floor-rp{
+    background-image: url("../img/floor-rp-xs.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 125%;
+  }
+
+  .containerRp{
+    top: 26%;
+    left: 5%;
+    width: 80vw;
+
+    .titleSong{
+      font-size: 2.5rem;
     }
   }
 
@@ -183,18 +254,82 @@ body{
 @media (min-width: 768px) and (max-width: 1024px){
   .logo{
     @include sizes(175px, 275px);
-    @include bg-img("../img/logo.png", $v250);
+    @include bg-img($logo, $v200);
   }
+  .navbar{
+    column-gap: 1.5em;
+
+    button{
+      background: none;
+      border: none;
+      display: flex;
+      justify-content: center;
+
+      i{
+        color: $lightblue;
+        font-size: 40px;
+        margin: auto;
+      }
+    }
+  }
+
   .contentLists{
     @include flex-column;
     @include flex-center;
+    margin: 0px 15px;
 
+    .listLists{
+      @include sizes($v250, $v600);
+
+      .list{
+        @include sizes($v250, $v600);
+        row-gap: 4rem;
+
+        .nameList{
+          font-size: 2em;
+        }
+
+        .descriptionList{
+          font-size: 1.8em;
+        }
+      }
+    }
+    .Reggeton{
+      @include bg-img("../img/regueton.jpg", $v600);
+      transition: background-position, 2s;
+    }
+    .Rock{
+      @include bg-img("../img/rock.jpg", $v600);
+      transition: background-position, 2s;
+    }
+    .Rap{
+      @include bg-img("../img/rap.jpg", $v600);
+      transition: background-position, 2s;
+    }
+    .Electronic{
+      @include bg-img("../img/electronic.jpg", $v600);
+      transition: background-position, 2s;
+    }
+    .Pop{
+      @include bg-img("../img/pop.png", $v600);
+      transition: background-position, 2s;
+    }
+    .Flamenco{
+      @include bg-img("../img/flamenco.jpg", $v600);
+      transition: background-position, 2s;
+    }
   }
 
   .contentSong{
     @include flex-row;
     justify-content: space-evenly;
     row-gap: 1.5em;
+    margin: 0 100px;
+
+    .nav{
+      width: 50px;
+
+    }
   }
 
   .btnUser{
@@ -215,36 +350,139 @@ body{
     }
   }
 
-  .formAddListUser{
-    @include flex-column;
-    @include flex-center;
-    row-gap: 2em;
-    width: 40em;
+  .addListUser{
+    margin: 0 100px;
 
-    input{
-      width: 75%;
-      height: 4em;
-      border-radius: $v12;
+    .formAddListUser{
+      @include flex-column;
+      @include flex-center;
+      row-gap: 2em;
+      width: 100%;
 
+      input{
+        width: 75%;
+        height: 4em;
+        border-radius: $v12;
+
+      }
+    }
+
+    form{
+      width: 100%;
     }
   }
+
+    .listUser {
+      margin: 2em 100px;
+
+      .nav {
+        width: 50px;
+        @include flex-column;
+
+      }
+    }
+
+  .listsSongsForm{
+
+    .nav{
+      @include flex-column;
+      width: 50px;
+    }
+  }
+
+  .floor-rp{
+    background-image: url("../img/floor-rp-xs.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 125%;
+  }
+  .containerRp{
+    top: 25%;
+    left: 20%;
+    width: 60vw;
+  }
+
 }
 
 @media (min-width: 1024px){
   .logo{
-    @include sizes(100px, 275px);
-    @include bg-img("../img/logo.png", 200px);
+    @include sizes($v100, $v275);
+    @include bg-img($logo, $v200);
   }
+  .navbar{
+    column-gap: 1.5em;
+
+    button{
+      background: none;
+      border: none;
+      display: flex;
+      justify-content: center;
+
+      i{
+        color: $lightblue;
+        font-size: 30px;
+        margin: auto;
+      }
+    }
+  }
+
   .contentLists{
     @include flex-row;
     @include flex-center;
+    margin: 0px 100px;
 
+    .listLists{
+      @include sizes($v250, $v600);
+
+      .list{
+        @include sizes($v250, $v600);
+        row-gap: 4rem;
+
+        .nameList{
+          font-size: 2em;
+        }
+
+        .descriptionList{
+          font-size: 1.8em;
+        }
+      }
+    }
+    .Reggeton{
+      @include bg-img("../img/regueton.jpg", $v600);
+      transition: background-position, 2s;
+    }
+    .Rock{
+      @include bg-img("../img/rock.jpg", $v600);
+      transition: background-position, 2s;
+    }
+    .Rap{
+      @include bg-img("../img/rap.jpg", $v600);
+      transition: background-position, 2s;
+    }
+    .Electronic{
+      @include bg-img("../img/electronic.jpg", $v600);
+      transition: background-position, 2s;
+    }
+    .Pop{
+      @include bg-img("../img/pop.png", $v600);
+      transition: background-position, 2s;
+    }
+    .Flamenco{
+      @include bg-img("../img/flamenco.jpg", $v600);
+      transition: background-position, 2s;
+    }
   }
 
   .contentSong{
     @include flex-row;
     justify-content: center;
     row-gap: 1.5em;
+    margin: 0 100px;
+
+    .nav{
+      width: 50px;
+    }
   }
 
   .btnUser{
@@ -265,7 +503,44 @@ body{
     }
   }
 
-  .formAddListUser{
-    @include flex-row;
+  .addListUser{
+    margin: 0 100px;
+
+    .formAddListUser{
+      @include flex-row;
+    }
+  }
+
+  .listUser{
+    margin: 2em 100px;
+
+    .nav{
+      width: 50px;
+      @include flex-column;
+
+    }
+  }
+
+  .listsSongsForm{
+
+    .nav{
+      @include flex-column;
+      width: 50px;
+    }
+  }
+
+  .floor-rp{
+    background-image: url("../img/floor-rp-lg.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 115%;
+  }
+
+  .containerRp{
+    top: 20%;
+    left: 25%;
+    width: 50vw;
+
   }
 }

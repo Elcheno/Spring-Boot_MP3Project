@@ -3,7 +3,6 @@
   background-color: $lightgrey;
   border-radius: $v12;
   padding: $v15;
-  margin: 0 100px;
 
   form{
     display: none;
@@ -61,7 +60,6 @@
   justify-content: center;
   column-gap: 1.5em;
   row-gap: 1.5em;
-  margin: 2em 100px;
   background-color: $lightgrey;
   border-radius: $v12;
   padding: $v20;
@@ -94,13 +92,11 @@
       }
 
       .nav{
-        @include flex-column;
         text-align: center;
         justify-content: end;
         row-gap: 0.3em;
         padding: $v10;
         background-color: $lightblue;
-        width: 50px;
 
         button{
           background-color: transparent;
@@ -155,13 +151,12 @@
         }
 
         .nav{
-          @include flex-column;
           text-align: center;
           justify-content: end;
           row-gap: 0.3em;
           padding: $v10;
           background-color: $lightblue;
-          width: 50px;
+
 
           button{
             background-color: transparent;

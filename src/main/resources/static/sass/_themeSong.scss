@@ -2,7 +2,6 @@
   background-color: $lightgrey;
   border-radius: $v12;
   padding: $v20;
-  margin: 0 100px;
   margin-bottom: 2em;
 
   .song{
@@ -41,8 +40,11 @@
       justify-content: center;
       padding: $v10;
       background-color: $lightblue;
-      width: 50px;
       text-align: center;
+
+      button{
+        font-size: 1.5rem;
+      }
 
       .btnRemoveSong{
         border: none;
